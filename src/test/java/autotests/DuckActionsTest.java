@@ -16,6 +16,8 @@ import utils.DuckActionsUtils;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import static com.consol.citrus.http.actions.HttpActionBuilder.http;
+
 
 public class DuckActionsTest extends TestNGCitrusSpringSupport {
     private static DuckActionsUtils duckActions;
@@ -49,17 +51,23 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
         JsonNode bodyJson = object.readTree(body);
         JsonNode bodyResponseJson = object.readTree(responseBody);
 
-
         duckActions.create(runner, host, bodyJson.toString());
-        duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        String duckId = duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        duckActions.delete(runner, host, duckId);
+        duckActions.validateResponse(runner, host, "{" +
+                "  \"message\": \"Duck is deleted\"" +
+                "}", HttpStatus.OK);
 
-        //Меняем поле material на wood
-
+        //Меняем поле material на wood и отправляем запрос на создание утки
         ((ObjectNode) bodyJson).put("material","wood");
         ((ObjectNode) bodyResponseJson).put("material","wood");
 
         duckActions.create(runner, host, bodyJson.toString());
-        duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        duckId = duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        duckActions.delete(runner, host, duckId);
+        duckActions.validateResponse(runner, host, "{" +
+                "  \"message\": \"Duck is deleted\"" +
+                "}", HttpStatus.OK);
     }
 
     @Test(description = "Метод получения характеристик уточки")
