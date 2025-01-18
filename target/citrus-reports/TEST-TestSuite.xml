@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSuite" time="0.0" tests="5" errors="0" skipped="0" failures="0">
+    <testcase name="DuckActionsTest.create" classname="autotests.DuckActionsTest" time="0.0"/>
+    <testcase name="DuckActionsTest.fly" classname="autotests.DuckActionsTest" time="0.0"/>
+    <testcase name="DuckActionsTest.properties" classname="autotests.DuckActionsTest" time="0.0"/>
+    <testcase name="DuckActionsTest.quack" classname="autotests.DuckActionsTest" time="0.0"/>
+    <testcase name="DuckActionsTest.swim" classname="autotests.DuckActionsTest" time="0.0"/>
+</testsuite>
