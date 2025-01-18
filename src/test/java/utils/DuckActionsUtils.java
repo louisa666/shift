@@ -32,21 +32,51 @@ public class DuckActionsUtils extends TestNGCitrusSpringSupport {
                 .message()
                 .queryParam("id", id));
     }
-
-    public void getProperties() {
-
+    public void update(TestCaseRunner runner, String host, String color, String height, String id, String material,
+                       String sound , String wingsState) {
+        runner.$(http().client(host)
+                .send()
+                .put("/api/duck/update")
+                .message()
+                .queryParam("color", color)
+                .queryParam("height", height)
+                .queryParam("id", id)
+                .queryParam("material", material)
+                .queryParam("sound", sound)
+                .queryParam("wingsState", wingsState));
+    }
+    public void getProperties(TestCaseRunner runner, String host, String id) {
+        runner.$(http().client(host)
+                .send()
+                .get("/api/duck/action/properties")
+                .message()
+                .queryParam("id", id));
     }
 
-    public void fly() {
-
+    public void fly(TestCaseRunner runner, String host, String id) {
+        runner.$(http().client(host)
+                .send()
+                .get("/api/duck/action/fly")
+                .message()
+                .queryParam("id", id));
     }
 
-    public void swim() {
-
+    public void swim(TestCaseRunner runner, String host, String id) {
+        runner.$(http().client(host)
+                .send()
+                .get("/api/duck/action/swim")
+                .message()
+                .queryParam("id", id));
     }
 
-    public void quack() {
-
+    public void quack(TestCaseRunner runner, String host, String id, String repetitionCount, String soundCount) {
+        runner.$(http().client(host)
+                .send()
+                .get("/api/duck/action/swim")
+                .message()
+                .queryParam("id", id)
+                .queryParam("repetitionCount", repetitionCount)
+                .queryParam("soundCount", soundCount));
     }
 
     public void validateResponse(TestCaseRunner runner, String host, String responseMessage, HttpStatus status) {
