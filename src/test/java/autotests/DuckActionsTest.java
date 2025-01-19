@@ -16,8 +16,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import static com.consol.citrus.DefaultTestActionBuilder.action;
-
 
 public class DuckActionsTest extends TestNGCitrusSpringSupport {
     private static DuckActionsUtils duckActions;
