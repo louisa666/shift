@@ -1,6 +1,8 @@
 package autotests;
 
+import com.consol.citrus.actions.AbstractTestAction;
 import com.consol.citrus.annotations.CitrusTest;
+import com.consol.citrus.context.TestContext;
 import com.consol.citrus.testng.spring.TestNGCitrusSpringSupport;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.testng.annotations.BeforeTest;
@@ -14,11 +16,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import static com.consol.citrus.DefaultTestActionBuilder.action;
+
 
 public class DuckActionsTest extends TestNGCitrusSpringSupport {
     private static DuckActionsUtils duckActions;
     private String host;
     String body;
+    int idDuck;
     String responseBody;
 
     @BeforeTest
@@ -48,16 +53,30 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
         ObjectMapper object = new ObjectMapper();
         JsonNode bodyJson = object.readTree(body);
         JsonNode bodyResponseJson = object.readTree(responseBody);
+        String duckId = "1";
+        try {
+            duckActions.create(runner, host, bodyJson.toString());
+            duckId = duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        } finally {
+            duckActions.delete(runner, host, duckId);
+            duckActions.validateResponse(runner, host, "{" +
+                    "  \"message\": \"Duck is deleted\"" +
+                    "}", HttpStatus.OK);
+        }
 
-        duckActions.create(runner, host, bodyJson.toString());
-        duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        try {
+            //Меняем поле material на wood и отправляем запрос на создание утки
+            ((ObjectNode) bodyJson).put("material", "wood");
+            ((ObjectNode) bodyResponseJson).put("material", "wood");
 
-        //Меняем поле material на wood и отправляем запрос на создание утки
-        ((ObjectNode) bodyJson).put("material", "wood");
-        ((ObjectNode) bodyResponseJson).put("material", "wood");
-
-        duckActions.create(runner, host, bodyJson.toString());
-        duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+            duckActions.create(runner, host, bodyJson.toString());
+            duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        } finally {
+            duckActions.delete(runner, host, duckId);
+            duckActions.validateResponse(runner, host, "{" +
+                    "  \"message\": \"Duck is deleted\"" +
+                    "}", HttpStatus.OK);
+        }
 
     }
 
@@ -130,23 +149,93 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
         ObjectMapper object = new ObjectMapper();
         JsonNode bodyJson = object.readTree(body);
         JsonNode bodyResponseJson = object.readTree(responseBody);
-
-        // Оставляем поле material по умолчанию rubber и отправляем запрос на просмотр  свойств
+        String duckId = "";
         duckActions.create(runner, host, bodyJson.toString());
-        duckActions.validateResponseCreate(runner, host, responseBody, HttpStatus.OK);
-        ((ObjectNode) bodyResponseJson).remove("id");
-        duckActions.getProperties(runner, host, "1");
-        duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        duckId = duckActions.validateResponseCreate(runner, host, responseBody, HttpStatus.OK);
+        variable("iii", duckId);
+        run(new AbstractTestAction() {
+            @Override
+            public void doExecute(TestContext context) {
+                String message = context.getVariable("iii");
+                idDuck = Integer.parseInt(message);
+            }
+        });
 
-        //Меняем поле material на wood и отправляем запрос на просмотр свойств
-        ((ObjectNode) bodyJson).put("material", "wood");
-        ((ObjectNode) bodyResponseJson).put("material", "wood");
-        ((ObjectNode) bodyResponseJson).remove("id");
-        duckActions.update(runner, host, bodyJson.get("color").toString(), bodyJson.get("height").toString(),
-                "2", bodyJson.get("material").toString(),
-                bodyJson.get("sound").toString(), bodyJson.get("wingsState").toString());
-        duckActions.getProperties(runner, host, "1");
-        duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+        if(idDuck%2 !=0)
+        {
+            try {
+                // Оставляем поле material по умолчанию rubber и отправляем запрос на просмотр  свойств
+                ((ObjectNode) bodyResponseJson).remove("id");
+                duckActions.getProperties(runner, host, duckId);
+                duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+            }
+            finally {
+                // Удаляем утку
+                duckActions.delete(runner, host, duckId);
+                duckActions.validateResponse(runner, host, "{" +
+                        "  \"message\": \"Duck is deleted\"" +
+                        "}", HttpStatus.OK);
+            }
+            try {
+                //Меняем поле material на wood и отправляем запрос на просмотр свойств
+                ((ObjectNode) bodyJson).put("material", "wood");
+                ((ObjectNode) bodyResponseJson).put("material", "wood");
+
+                duckActions.create(runner, host, bodyJson.toString());
+                duckId = duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+                ((ObjectNode) bodyResponseJson).remove("id");
+                duckActions.getProperties(runner, host, duckId);
+                duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+            }
+            finally {
+                // Удаляем утку
+                duckActions.delete(runner, host, duckId);
+                duckActions.validateResponse(runner, host, "{" +
+                        "  \"message\": \"Duck is deleted\"" +
+                        "}", HttpStatus.OK);
+            }
+        }
+        else {
+            try {
+                // Меняем  поле material на умолчанию wood и отправляем запрос на просмотр  свойств
+                ((ObjectNode) bodyJson).put("material", "wood");
+                ((ObjectNode) bodyResponseJson).put("material", "wood");
+                duckActions.update(runner, host, bodyJson.get("color").toString(), bodyJson.get("height").toString(),
+                        duckId, bodyJson.get("material").toString(),
+                        bodyJson.get("sound").toString(), bodyJson.get("wingsState").toString());;
+
+                ((ObjectNode) bodyResponseJson).remove("id");
+                duckActions.getProperties(runner, host, duckId);
+                duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+            }
+            finally {
+                // Удаляем утку
+                duckActions.delete(runner, host, duckId);
+                duckActions.validateResponse(runner, host, "{" +
+                        "  \"message\": \"Duck is deleted\"" +
+                        "}", HttpStatus.OK);
+            }
+            try {
+                //Создаем утку с полем material по умолчанию  и отправляем запрос на просмотр свойств
+                duckActions.create(runner, host, body);
+                duckId = duckActions.validateResponseCreate(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+
+                ((ObjectNode) bodyResponseJson).remove("id");
+                duckActions.getProperties(runner, host, duckId);
+                duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+
+
+                duckActions.getProperties(runner, host, duckId);
+                duckActions.validateResponse(runner, host, bodyResponseJson.toString(), HttpStatus.OK);
+            }
+            finally {
+                // Удаляем утку
+                duckActions.delete(runner, host, duckId);
+                duckActions.validateResponse(runner, host, "{" +
+                        "  \"message\": \"Duck is deleted\"" +
+                        "}", HttpStatus.OK);
+            }
+        }
 
     }
 
