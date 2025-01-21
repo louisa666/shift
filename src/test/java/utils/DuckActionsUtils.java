@@ -1,8 +1,6 @@
 package utils;
 
-import com.consol.citrus.model.testcase.core.ReceiveModel;
 import com.consol.citrus.testng.spring.TestNGCitrusSpringSupport;
-import com.jayway.jsonpath.JsonPath;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import com.consol.citrus.TestCaseRunner;
