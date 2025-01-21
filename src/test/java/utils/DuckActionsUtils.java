@@ -86,7 +86,7 @@ public class DuckActionsUtils extends TestNGCitrusSpringSupport {
                 .body(responseMessage));
     }
 
-    public String validateResponseCreate(TestCaseRunner runner, String host, String responseMessage, HttpStatus status) {
+    public String validateResponseCreateAndGetId(TestCaseRunner runner, String host, String responseMessage, HttpStatus status) {
         runner.$(http().client(host)
                 .receive()
                 .response(status)
