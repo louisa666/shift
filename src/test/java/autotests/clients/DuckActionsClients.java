@@ -1,34 +1,44 @@
-package utils;
+package autotests.clients;
 
+import autotests.EndpointConfig;
 import com.consol.citrus.testng.spring.TestNGCitrusSpringSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import com.consol.citrus.http.client.HttpClient;
 import com.consol.citrus.TestCaseRunner;
+import org.springframework.test.context.ContextConfiguration;
 
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 import static com.consol.citrus.dsl.MessageSupport.MessageBodySupport.fromBody;
 
-public class DuckActionsUtils extends TestNGCitrusSpringSupport {
-    public void create(TestCaseRunner runner, String host, String body) {
-        runner.$(http().client(host)
+
+@ContextConfiguration(classes = {EndpointConfig.class})
+public class DuckActionsClients extends TestNGCitrusSpringSupport {
+    @Autowired
+    protected HttpClient yellowDuckService;
+
+    // Создание утки
+    public void create(TestCaseRunner runner, String body) {
+        runner.$(http().client(yellowDuckService)
                 .send()
                 .post("/api/duck/create")
                 .message()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(body));
     }
-
-    public void delete(TestCaseRunner runner, String host, String id) {
-        runner.$(http().client(host)
+    // Удавление утки
+    public void delete(TestCaseRunner runner, String id) {
+        runner.$(http().client(yellowDuckService)
                 .send()
                 .delete("/api/duck/delete")
                 .message()
                 .queryParam("id", id));
     }
-
-    public void update(TestCaseRunner runner, String host, String color, String height, String id, String material,
+    // Обновление свойств утки
+    public void update(TestCaseRunner runner, String color, String height, String id, String material,
                        String sound, String wingsState) {
-        runner.$(http().client(host)
+        runner.$(http().client(yellowDuckService)
                 .send()
                 .put("/api/duck/update")
                 .message()
@@ -39,33 +49,33 @@ public class DuckActionsUtils extends TestNGCitrusSpringSupport {
                 .queryParam("sound", sound.replace("\"", ""))
                 .queryParam("wingsState", wingsState.replace("\"", "")));
     }
-
-    public void getProperties(TestCaseRunner runner, String host, String id) {
-        runner.$(http().client(host)
+    // Получение свойств утки
+    public void getProperties(TestCaseRunner runner, String id) {
+        runner.$(http().client(yellowDuckService)
                 .send()
                 .get("/api/duck/action/properties")
                 .message()
                 .queryParam("id", id));
     }
-
-    public void fly(TestCaseRunner runner, String host, String id) {
-        runner.$(http().client(host)
+    // Заставить утку летать
+    public void fly(TestCaseRunner runner, String id) {
+        runner.$(http().client(yellowDuckService)
                 .send()
                 .get("/api/duck/action/fly")
                 .message()
                 .queryParam("id", id));
     }
-
-    public void swim(TestCaseRunner runner, String host, String id) {
-        runner.$(http().client(host)
+    // Заставить утку плавать
+    public void swim(TestCaseRunner runner, String id) {
+        runner.$(http().client(yellowDuckService)
                 .send()
                 .get("/api/duck/action/swim")
                 .message()
                 .queryParam("id", id));
     }
-
-    public void quack(TestCaseRunner runner, String host, String id, String repetitionCount, String soundCount) {
-        runner.$(http().client(host)
+    // Заставить утку крякать
+    public void quack(TestCaseRunner runner, String id, String repetitionCount, String soundCount) {
+        runner.$(http().client(yellowDuckService)
                 .send()
                 .get("/api/duck/action/quack")
                 .message()
@@ -74,18 +84,18 @@ public class DuckActionsUtils extends TestNGCitrusSpringSupport {
                 .queryParam("soundCount", soundCount));
     }
 
-
-    public void validateResponse(TestCaseRunner runner, String host, String responseMessage, HttpStatus status) {
-        runner.$(http().client(host)
+    // Получение и проверка ответа для всех методов
+    public void validateResponse(TestCaseRunner runner, String responseMessage, HttpStatus status) {
+        runner.$(http().client(yellowDuckService)
                 .receive()
                 .response(status)
                 .message()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(responseMessage));
     }
-
-    public String validateResponseCreateAndGetId(TestCaseRunner runner, String host, String responseMessage, HttpStatus status) {
-        runner.$(http().client(host)
+    // Получение, проверка ответа и извлечение id утки для метода create
+    public String validateResponseCreateAndGetId(TestCaseRunner runner, String responseMessage, HttpStatus status) {
+        runner.$(http().client(yellowDuckService)
                 .receive()
                 .response(status)
                 .message()
