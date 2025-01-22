@@ -100,7 +100,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .body(responseMessage));
     }
 
-     // Получение id
+     // Получение id утки
     public void getIdDuck(TestCaseRunner runner, HttpStatus status) {
         runner.$(http().client(yellowDuckService)
                 .receive()
