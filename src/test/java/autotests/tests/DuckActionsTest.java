@@ -14,7 +14,6 @@ import autotests.clients.DuckActionsClients;
 public class DuckActionsTest extends DuckActionsClients {
     int idDuck;
 
-
     @Test(description = "Метод создания утки (material = rubber")
     @CitrusTest
     public void createRubber(@Optional @CitrusResource TestCaseRunner runner) {

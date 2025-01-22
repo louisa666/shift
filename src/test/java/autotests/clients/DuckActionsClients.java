@@ -28,7 +28,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .body(body));
     }
 
-    // Удавление утки
+    // Удаление утки
     public void delete(TestCaseRunner runner, String id) {
         runner.$(http().client(yellowDuckService)
                 .send()
@@ -100,7 +100,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .body(responseMessage));
     }
 
-    // Получение, проверка ответа и извлечение id утки для метода create
+    // Создание утки и извлечение id
     public void getIdDuck(TestCaseRunner runner, HttpStatus status) {
         runner.$(http().client(yellowDuckService)
                 .receive()
@@ -108,7 +108,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .message()
                 .extract(fromBody().expression("$.id", "id")));
     }
-
+    // Создание утки, проверка ответа и извлечение id
     public void validateResponseCreateAndGetId(TestCaseRunner runner, String responseMessage, HttpStatus status) {
         runner.$(http().client(yellowDuckService)
                 .receive()
