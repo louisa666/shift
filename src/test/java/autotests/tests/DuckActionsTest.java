@@ -273,10 +273,10 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"color\": \"yellow\"," +
                     "  \"height\": 5," +
                     "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
+                    "  \"sound\": \"quack\"" +
                     "}";
             create(runner,  body);
-            getIdDuck(runner,   HttpStatus.OK);
+            getIdDuck(runner,  HttpStatus.OK);
 
             fly(runner,  "${id}");
             validateResponse(runner,  "{" + "\"message\": \"Wings are not detected\"}",

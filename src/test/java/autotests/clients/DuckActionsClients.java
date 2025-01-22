@@ -44,12 +44,12 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .send()
                 .put("/api/duck/update")
                 .message()
-                .queryParam("color", color.replace("\"", ""))
+                .queryParam("color", color)
                 .queryParam("height", height)
                 .queryParam("id", id)
-                .queryParam("material", material.replace("\"", ""))
-                .queryParam("sound", sound.replace("\"", ""))
-                .queryParam("wingsState", wingsState.replace("\"", "")));
+                .queryParam("material", material)
+                .queryParam("sound", sound)
+                .queryParam("wingsState", wingsState));
     }
 
     // Получение свойств утки
@@ -100,7 +100,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .body(responseMessage));
     }
 
-    // Создание утки и извлечение id
+     // Получение id
     public void getIdDuck(TestCaseRunner runner, HttpStatus status) {
         runner.$(http().client(yellowDuckService)
                 .receive()
@@ -108,7 +108,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .message()
                 .extract(fromBody().expression("$.id", "id")));
     }
-    // Создание утки, проверка ответа и извлечение id
+    // Проверка ответа и извлечение id утки
     public void validateResponseCreateAndGetId(TestCaseRunner runner, String responseMessage, HttpStatus status) {
         runner.$(http().client(yellowDuckService)
                 .receive()
