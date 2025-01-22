@@ -209,7 +209,7 @@ public class DuckActionsTest extends DuckActionsClients {
                     }
                 });
             }
-            while (idDuck % 2 == 0);
+            while (idDuck % 2 != 0);
             getProperties(runner,  "${id}");
             validateResponse(runner,  responseProperty, HttpStatus.OK);
         } finally {
