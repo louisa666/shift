@@ -12,7 +12,6 @@ import autotests.clients.DuckActionsClients;
 
 
 public class DuckActionsTest extends DuckActionsClients {
-    String duckId = "1";
     int idDuck;
 
 
@@ -35,10 +34,10 @@ public class DuckActionsTest extends DuckActionsClients {
                 "  \"wingsState\": \"ACTIVE\"" +
                 "}";
         try {
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            validateResponseCreateAndGetId(runner,  responseBody, HttpStatus.OK);
         } finally {
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
 
     }
@@ -63,16 +62,16 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
 
-            create(runner, body);
-            validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            validateResponseCreateAndGetId(runner,  responseBody, HttpStatus.OK);
         } finally {
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
     }
 
     @Test(description = "Метод удаления уточки")
     @CitrusTest
-    public void deleteDuck(@Optional @CitrusResource TestCaseRunner runner) {
+    public void delete(@Optional @CitrusResource TestCaseRunner runner) {
         String body = "{" +
                 "  \"color\": \"yellow\"," +
                 "  \"height\": 5," +
@@ -80,18 +79,10 @@ public class DuckActionsTest extends DuckActionsClients {
                 "  \"sound\": \"quack\"," +
                 "  \"wingsState\": \"ACTIVE\"" +
                 "}";
-        String responseBody = "{" +
-                "  \"id\": \"@ignore@\"," +
-                "  \"color\": \"yellow\"," +
-                "  \"height\": 5.0," +
-                "  \"material\": \"rubber\"," +
-                "  \"sound\": \"quack\"," +
-                "  \"wingsState\": \"ACTIVE\"" +
-                "}";
-        create(runner, body);
-        duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
-        delete(runner, duckId);
-        validateResponse(runner, "{" +
+        create(runner,  body);
+        getIdDuck(runner,   HttpStatus.OK);
+        delete(runner,  "${id}");
+        validateResponse(runner,  "{" +
                 "  \"message\": \"Duck is deleted\"" +
                 "}", HttpStatus.OK);
     }
@@ -107,27 +98,19 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             // Создаем утку и получаем id
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            getIdDuck(runner,   HttpStatus.OK);
 
             //Меняем цвет и высоту уточки
-            update(runner, "red", "7",
-                    duckId, "rubber",
+            update(runner,  "red", "7",
+                    "${id}", "rubber",
                     "quack", "ACTIVE");
-            validateResponse(runner, "{" +
-                    "  \"message\": \"Duck with id = " + duckId + " is updated\"" + "}", HttpStatus.OK);
+            validateResponse(runner,  "{" +
+                    "  \"message\": \"Duck with id = ${id} is updated\"" + "}", HttpStatus.OK);
         } finally {
             //Удаляем утку
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
     }
 
@@ -142,25 +125,17 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             // Создаем новую утку
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            getIdDuck(runner,   HttpStatus.OK);
             //Меняем цвет и звук уточки уточки (недопустимо менять звук утки, поэтому должна быть ошибка 400)
-            update(runner, "red", "5", duckId, "rubber",
+            update(runner,  "red", "5", "${id}", "rubber",
                     "meow", "ACTIVE");
-            validateResponse(runner, "{" +
-                    "  \"message\": \"Duck with id = " + duckId + " is not updated\"" + "}", HttpStatus.BAD_REQUEST);
+            validateResponse(runner,  "{" +
+                    "  \"message\": \"Duck with id = \"${id}\" is not updated\"" + "}", HttpStatus.BAD_REQUEST);
         } finally {
             // Удаляем утку
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
     }
 
@@ -175,14 +150,6 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             String responseProperty = "{" +
                     "  \"color\": \"yellow\"," +
                     "  \"height\": 5.0," +
@@ -191,12 +158,12 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
             do {
-                create(runner, body);
-                duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+                create(runner,  body);
+                getIdDuck(runner,   HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
@@ -204,11 +171,11 @@ public class DuckActionsTest extends DuckActionsClients {
             while (idDuck % 2 == 0);
 
             // Оставляем поле material по умолчанию rubber и отправляем запрос на просмотр  свойств
-            getProperties(runner, duckId);
-            validateResponse(runner, responseProperty, HttpStatus.OK);
+            getProperties(runner,  "${id}");
+            validateResponse(runner,  responseProperty, HttpStatus.OK);
         } finally {
             // Удаляем утку
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
 
     }
@@ -225,14 +192,6 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             String responseProperty = "{" +
                     "  \"color\": \"yellow\"," +
                     "  \"height\": 5.0," +
@@ -241,22 +200,22 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
             do {
-                create(runner, body);
-                duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+                create(runner,  body);
+                getIdDuck(runner,   HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
             }
             while (idDuck % 2 == 0);
-            getProperties(runner, duckId);
-            validateResponse(runner, responseProperty, HttpStatus.OK);
+            getProperties(runner,  "${id}");
+            validateResponse(runner,  responseProperty, HttpStatus.OK);
         } finally {
             // Удаляем утку
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
     }
 
@@ -272,21 +231,13 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            getIdDuck(runner,   HttpStatus.OK);
 
-            fly(runner, duckId);
-            validateResponse(runner, "{" + "\"message\": \"I'm flying\"}", HttpStatus.OK);
+            fly(runner,  "${id}");
+            validateResponse(runner,  "{" + "\"message\": \"I'm flying\"}", HttpStatus.OK);
         } finally {
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
 
     }
@@ -303,22 +254,14 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"FIXED\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"FIXED\"" +
-                    "}";
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            getIdDuck(runner,   HttpStatus.OK);
 
-            fly(runner, duckId);
-            validateResponse(runner, "{" + "\"message\": \"I can't fly\"}", HttpStatus.OK);
+            fly(runner,  "${id}");
+            validateResponse(runner,  "{" + "\"message\": \"I can't fly\"}", HttpStatus.OK);
         } finally {
-            fly(runner, duckId);
-            delete(runner, duckId);
+            //fly(runner,  "${id}");
+            delete(runner,  "${id}");
         }
     }
 
@@ -333,22 +276,14 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"material\": \"wood\"," +
                     "  \"sound\": \"quack\"," +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"UNDEFINED\"" +
-                    "}";
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            getIdDuck(runner,   HttpStatus.OK);
 
-            fly(runner, duckId);
-            validateResponse(runner, "{" + "\"message\": \"Wings are not detected\"}",
+            fly(runner,  "${id}");
+            validateResponse(runner,  "{" + "\"message\": \"Wings are not detected\"}",
                     HttpStatus.INTERNAL_SERVER_ERROR);
         } finally {
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
     }
 
@@ -364,20 +299,12 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
-            swim(runner, duckId);
-            validateResponse(runner, "{" + "\"message\": \"I'm swimming\"}", HttpStatus.OK);
+            create(runner,  body);
+            getIdDuck(runner,   HttpStatus.OK);
+            swim(runner,  "${id}");
+            validateResponse(runner,  "{" + "\"message\": \"I'm swimming\"}", HttpStatus.OK);
         } finally {
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
 
     }
@@ -394,20 +321,12 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            create(runner, body);
-            duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+            create(runner,  body);
+            getIdDuck(runner,   HttpStatus.OK);
         } finally {
-            delete(runner, duckId);
-            swim(runner, duckId);
-            validateResponse(runner, "{" + "\"message\": \"Paws are not found\"}", HttpStatus.NOT_FOUND);
+            delete(runner,  "${id}");
+            swim(runner,  "${id}");
+            validateResponse(runner,  "{" + "\"message\": \"Paws are not found\"}", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -422,31 +341,23 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             do {
-                create(runner, body);
-                duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+                create(runner,  body);
+                getIdDuck(runner,   HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
             }
             while (idDuck % 2 != 0);
-            quack(runner, duckId, "1", "1");
-            validateResponse(runner, "{" +
+            quack(runner,  "${id}", "1", "1");
+            validateResponse(runner,  "{" +
                     " \"sound\": \"quack\"" + "}", HttpStatus.OK);
         } finally {
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
 
     }
@@ -462,31 +373,23 @@ public class DuckActionsTest extends DuckActionsClients {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             do {
-                create(runner, body);
-                duckId = validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
+                create(runner,  body);
+                getIdDuck(runner,  HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
             }
             while (idDuck % 2 == 0);
-            quack(runner, duckId, "1", "1");
-            validateResponse(runner, "{" +
+            quack(runner, "${id}", "1", "1");
+            validateResponse(runner,  "{" +
                     " \"sound\": \"quack\"" + "}", HttpStatus.OK);
         } finally {
-            delete(runner, duckId);
+            delete(runner,  "${id}");
         }
     }
 

@@ -27,6 +27,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(body));
     }
+
     // Удавление утки
     public void delete(TestCaseRunner runner, String id) {
         runner.$(http().client(yellowDuckService)
@@ -35,6 +36,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .message()
                 .queryParam("id", id));
     }
+
     // Обновление свойств утки
     public void update(TestCaseRunner runner, String color, String height, String id, String material,
                        String sound, String wingsState) {
@@ -49,6 +51,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .queryParam("sound", sound.replace("\"", ""))
                 .queryParam("wingsState", wingsState.replace("\"", "")));
     }
+
     // Получение свойств утки
     public void getProperties(TestCaseRunner runner, String id) {
         runner.$(http().client(yellowDuckService)
@@ -57,6 +60,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .message()
                 .queryParam("id", id));
     }
+
     // Заставить утку летать
     public void fly(TestCaseRunner runner, String id) {
         runner.$(http().client(yellowDuckService)
@@ -65,6 +69,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .message()
                 .queryParam("id", id));
     }
+
     // Заставить утку плавать
     public void swim(TestCaseRunner runner, String id) {
         runner.$(http().client(yellowDuckService)
@@ -73,6 +78,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .message()
                 .queryParam("id", id));
     }
+
     // Заставить утку крякать
     public void quack(TestCaseRunner runner, String id, String repetitionCount, String soundCount) {
         runner.$(http().client(yellowDuckService)
@@ -93,8 +99,17 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(responseMessage));
     }
+
     // Получение, проверка ответа и извлечение id утки для метода create
-    public String validateResponseCreateAndGetId(TestCaseRunner runner, String responseMessage, HttpStatus status) {
+    public void getIdDuck(TestCaseRunner runner, HttpStatus status) {
+        runner.$(http().client(yellowDuckService)
+                .receive()
+                .response(status)
+                .message()
+                .extract(fromBody().expression("$.id", "id")));
+    }
+
+    public void validateResponseCreateAndGetId(TestCaseRunner runner, String responseMessage, HttpStatus status) {
         runner.$(http().client(yellowDuckService)
                 .receive()
                 .response(status)
@@ -102,7 +117,6 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .extract(fromBody().expression("$.id", "id"))
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(responseMessage));
-        return "${id}";
     }
 
 }
