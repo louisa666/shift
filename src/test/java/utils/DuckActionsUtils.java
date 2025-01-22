@@ -84,7 +84,14 @@ public class DuckActionsUtils extends TestNGCitrusSpringSupport {
                 .body(responseMessage));
     }
 
-    public String validateResponseCreateAndGetId(TestCaseRunner runner, String host, String responseMessage, HttpStatus status) {
+    public void getIdDuck(TestCaseRunner runner, String host, HttpStatus status) {
+        runner.$(http().client(host)
+                .receive()
+                .response(status)
+                .message()
+                .extract(fromBody().expression("$.id", "id")));
+    }
+    public void validateResponseCreateAndGetId(TestCaseRunner runner, String host, String responseMessage, HttpStatus status) {
         runner.$(http().client(host)
                 .receive()
                 .response(status)
@@ -92,8 +99,8 @@ public class DuckActionsUtils extends TestNGCitrusSpringSupport {
                 .extract(fromBody().expression("$.id", "id"))
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(responseMessage));
-        return "${id}";
     }
+
 
 }
 

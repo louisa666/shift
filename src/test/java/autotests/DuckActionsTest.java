@@ -15,7 +15,6 @@ import utils.DuckActionsUtils;
 public class DuckActionsTest extends TestNGCitrusSpringSupport {
     private static DuckActionsUtils duckActions = new DuckActionsUtils();
     private String host = "http://localhost:2222";
-    String duckId = "1";
     int idDuck;
 
 
@@ -39,9 +38,9 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                 "}";
         try {
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+            duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
         } finally {
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
 
     }
@@ -69,7 +68,7 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
             duckActions.create(runner, host, body);
             duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
         } finally {
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
     }
 
@@ -83,17 +82,9 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                 "  \"sound\": \"quack\"," +
                 "  \"wingsState\": \"ACTIVE\"" +
                 "}";
-        String responseBody = "{" +
-                "  \"id\": \"@ignore@\"," +
-                "  \"color\": \"yellow\"," +
-                "  \"height\": 5.0," +
-                "  \"material\": \"rubber\"," +
-                "  \"sound\": \"quack\"," +
-                "  \"wingsState\": \"ACTIVE\"" +
-                "}";
         duckActions.create(runner, host, body);
-        duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
-        duckActions.delete(runner, host, duckId);
+        duckActions.getIdDuck(runner, host,  HttpStatus.OK);
+        duckActions.delete(runner, host, "${id}");
         duckActions.validateResponse(runner, host, "{" +
                 "  \"message\": \"Duck is deleted\"" +
                 "}", HttpStatus.OK);
@@ -110,27 +101,19 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             // Создаем утку и получаем id
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+            duckActions.getIdDuck(runner, host,  HttpStatus.OK);
 
             //Меняем цвет и высоту уточки
             duckActions.update(runner, host, "red", "7",
-                    duckId, "rubber",
+                    "${id}", "rubber",
                     "quack", "ACTIVE");
             duckActions.validateResponse(runner, host, "{" +
-                    "  \"message\": \"Duck with id = " + duckId + " is updated\"" + "}", HttpStatus.OK);
+                    "  \"message\": \"Duck with id = ${id} is updated\"" + "}", HttpStatus.OK);
         } finally {
             //Удаляем утку
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
     }
 
@@ -145,25 +128,17 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             // Создаем новую утку
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+            duckActions.getIdDuck(runner, host,  HttpStatus.OK);
             //Меняем цвет и звук уточки уточки (недопустимо менять звук утки, поэтому должна быть ошибка 400)
-            duckActions.update(runner, host, "red", "5", duckId, "rubber",
+            duckActions.update(runner, host, "red", "5", "${id}", "rubber",
                     "meow", "ACTIVE");
             duckActions.validateResponse(runner, host, "{" +
-                    "  \"message\": \"Duck with id = " + duckId + " is not updated\"" + "}", HttpStatus.BAD_REQUEST);
+                    "  \"message\": \"Duck with id = \"${id}\" is not updated\"" + "}", HttpStatus.BAD_REQUEST);
         } finally {
             // Удаляем утку
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
     }
 
@@ -178,14 +153,6 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             String responseProperty = "{" +
                     "  \"color\": \"yellow\"," +
                     "  \"height\": 5.0," +
@@ -195,11 +162,11 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "}";
             do {
                 duckActions.create(runner, host, body);
-                duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+                duckActions.getIdDuck(runner, host,  HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
@@ -207,11 +174,11 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
             while (idDuck % 2 == 0);
 
             // Оставляем поле material по умолчанию rubber и отправляем запрос на просмотр  свойств
-            duckActions.getProperties(runner, host, duckId);
+            duckActions.getProperties(runner, host, "${id}");
             duckActions.validateResponse(runner, host, responseProperty, HttpStatus.OK);
         } finally {
             // Удаляем утку
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
 
     }
@@ -228,14 +195,6 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             String responseProperty = "{" +
                     "  \"color\": \"yellow\"," +
                     "  \"height\": 5.0," +
@@ -245,21 +204,21 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "}";
             do {
                 duckActions.create(runner, host, body);
-                duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+                duckActions.getIdDuck(runner, host,  HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
             }
             while (idDuck % 2 == 0);
-            duckActions.getProperties(runner, host, duckId);
+            duckActions.getProperties(runner, host, "${id}");
             duckActions.validateResponse(runner, host, responseProperty, HttpStatus.OK);
         } finally {
             // Удаляем утку
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
     }
 
@@ -275,21 +234,13 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+            duckActions.getIdDuck(runner, host,  HttpStatus.OK);
 
-            duckActions.fly(runner, host, duckId);
+            duckActions.fly(runner, host, "${id}");
             duckActions.validateResponse(runner, host, "{" + "\"message\": \"I'm flying\"}", HttpStatus.OK);
         } finally {
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
 
     }
@@ -306,22 +257,14 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"FIXED\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"FIXED\"" +
-                    "}";
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+            duckActions.getIdDuck(runner, host,  HttpStatus.OK);
 
-            duckActions.fly(runner, host, duckId);
+            duckActions.fly(runner, host, "${id}");
             duckActions.validateResponse(runner, host, "{" + "\"message\": \"I can't fly\"}", HttpStatus.OK);
         } finally {
-            duckActions.fly(runner, host, duckId);
-            duckActions.delete(runner, host, duckId);
+            //duckActions.fly(runner, host, "${id}");
+            duckActions.delete(runner, host, "${id}");
         }
     }
 
@@ -336,22 +279,14 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"material\": \"wood\"," +
                     "  \"sound\": \"quack\"," +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"UNDEFINED\"" +
-                    "}";
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+            duckActions.getIdDuck(runner, host,  HttpStatus.OK);
 
-            duckActions.fly(runner, host, duckId);
+            duckActions.fly(runner, host, "${id}");
             duckActions.validateResponse(runner, host, "{" + "\"message\": \"Wings are not detected\"}",
                     HttpStatus.INTERNAL_SERVER_ERROR);
         } finally {
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
     }
 
@@ -367,20 +302,12 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
-            duckActions.swim(runner, host, duckId);
+            duckActions.getIdDuck(runner, host,  HttpStatus.OK);
+            duckActions.swim(runner, host, "${id}");
             duckActions.validateResponse(runner, host, "{" + "\"message\": \"I'm swimming\"}", HttpStatus.OK);
         } finally {
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
 
     }
@@ -397,19 +324,11 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             duckActions.create(runner, host, body);
-            duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+            duckActions.getIdDuck(runner, host,  HttpStatus.OK);
         } finally {
-            duckActions.delete(runner, host, duckId);
-            duckActions.swim(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
+            duckActions.swim(runner, host, "${id}");
             duckActions.validateResponse(runner, host, "{" + "\"message\": \"Paws are not found\"}", HttpStatus.NOT_FOUND);
         }
     }
@@ -425,31 +344,23 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             do {
                 duckActions.create(runner, host, body);
-                duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+                duckActions.getIdDuck(runner, host,  HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
             }
             while (idDuck % 2 != 0);
-            duckActions.quack(runner, host, duckId, "1", "1");
+            duckActions.quack(runner, host, "${id}", "1", "1");
             duckActions.validateResponse(runner, host, "{" +
                     " \"sound\": \"quack\"" + "}", HttpStatus.OK);
         } finally {
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
 
     }
@@ -465,31 +376,23 @@ public class DuckActionsTest extends TestNGCitrusSpringSupport {
                     "  \"sound\": \"quack\"," +
                     "  \"wingsState\": \"ACTIVE\"" +
                     "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
             do {
                 duckActions.create(runner, host, body);
-                duckId = duckActions.validateResponseCreateAndGetId(runner, host, responseBody, HttpStatus.OK);
+                duckActions.getIdDuck(runner, host,  HttpStatus.OK);
                 run(new AbstractTestAction() {
                     @Override
                     public void doExecute(TestContext context) {
-                        String message = context.getVariable(duckId);
+                        String message = context.getVariable("${id}");
                         idDuck = Integer.parseInt(message);
                     }
                 });
             }
             while (idDuck % 2 == 0);
-            duckActions.quack(runner, host, duckId, "1", "1");
+            duckActions.quack(runner, host, "${id}", "1", "1");
             duckActions.validateResponse(runner, host, "{" +
                     " \"sound\": \"quack\"" + "}", HttpStatus.OK);
         } finally {
-            duckActions.delete(runner, host, duckId);
+            duckActions.delete(runner, host, "${id}");
         }
     }
 
