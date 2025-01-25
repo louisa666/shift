@@ -1,8 +1,7 @@
 package autotests.tests;
 
-import com.consol.citrus.actions.AbstractTestAction;
+import autotests.payloads.*;
 import com.consol.citrus.annotations.CitrusTest;
-import com.consol.citrus.context.TestContext;
 import org.testng.annotations.Test;
 import com.consol.citrus.TestCaseRunner;
 import org.testng.annotations.Optional;
@@ -10,78 +9,41 @@ import com.consol.citrus.annotations.CitrusResource;
 import org.springframework.http.HttpStatus;
 import autotests.clients.DuckActionsClients;
 
+import static com.consol.citrus.DefaultTestActionBuilder.action;
+import static com.consol.citrus.container.FinallySequence.Builder.doFinally;
+
 
 public class DuckActionsTest extends DuckActionsClients {
-    int idDuck;
 
     @Test(description = "Метод создания утки (material = rubber")
     @CitrusTest
     public void createRubber(@Optional @CitrusResource TestCaseRunner runner) {
-        String body = "{" +
-                "  \"color\": \"yellow\"," +
-                "  \"height\": 5," +
-                "  \"material\": \"rubber\"," +
-                "  \"sound\": \"quack\"," +
-                "  \"wingsState\": \"ACTIVE\"" +
-                "}";
-        String responseBody = "{" +
-                "  \"id\": \"@ignore@\"," +
-                "  \"color\": \"yellow\"," +
-                "  \"height\": 5.0," +
-                "  \"material\": \"rubber\"," +
-                "  \"sound\": \"quack\"," +
-                "  \"wingsState\": \"ACTIVE\"" +
-                "}";
-        try {
-            create(runner,  body);
-            validateResponseCreateAndGetId(runner,  responseBody, HttpStatus.OK);
-        } finally {
-            delete(runner,  "${id}");
-        }
+        runner.$(doFinally().actions(action -> delete(runner)));
+        Duck duck = new Duck().color("yellow").height(5.0).material("rubber").sound("quack").wingsState(WingState.ACTIVE);
+        String responseBody = "duckActionsTest/successfulCreateRubber.json";
+        create(runner, duck);
+        validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
 
     }
 
     @Test(description = "Метод создания утки (material = wood")
     @CitrusTest
     public void createWood(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            String responseBody = "{" +
-                    "  \"id\": \"@ignore@\"," +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-
-            create(runner,  body);
-            validateResponseCreateAndGetId(runner,  responseBody, HttpStatus.OK);
-        } finally {
-            delete(runner,  "${id}");
-        }
+        runner.$(doFinally().actions(action -> delete(runner)));
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+        String responseBody = "duckActionsTest/successfulCreateWood.json";
+        create(runner, duck);
+        validateResponseCreateAndGetId(runner, responseBody, HttpStatus.OK);
     }
 
     @Test(description = "Метод удаления уточки")
     @CitrusTest
-    public void delete(@Optional @CitrusResource TestCaseRunner runner) {
-        String body = "{" +
-                "  \"color\": \"yellow\"," +
-                "  \"height\": 5," +
-                "  \"material\": \"rubber\"," +
-                "  \"sound\": \"quack\"," +
-                "  \"wingsState\": \"ACTIVE\"" +
-                "}";
-        create(runner,  body);
-        getIdDuck(runner,   HttpStatus.OK);
-        delete(runner,  "${id}");
-        validateResponse(runner,  "{" +
+    public void deleteDuck(@Optional @CitrusResource TestCaseRunner runner) {
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+        create(runner, duck);
+        getIdDuck(runner);
+        delete(runner);
+        validateResponse(runner, "{" +
                 "  \"message\": \"Duck is deleted\"" +
                 "}", HttpStatus.OK);
     }
@@ -89,223 +51,125 @@ public class DuckActionsTest extends DuckActionsClients {
     @Test(description = "Метод изменения уточки (меняем цвет и высоту")
     @CitrusTest
     public void updateHeight(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            // Создаем утку и получаем id
-            create(runner,  body);
-            getIdDuck(runner,   HttpStatus.OK);
+        runner.$(doFinally().actions(action -> delete(runner)));
+        Duck duck = new Duck().color("yellow").height(5.0).material("rubber").sound("quack").wingsState(WingState.ACTIVE);
+        // Создаем утку и получаем id
+        create(runner, duck);
+        getIdDuck(runner);
 
-            //Меняем цвет и высоту уточки
-            update(runner,  "red", "7",
-                    "${id}", "rubber",
-                    "quack", "ACTIVE");
-            validateResponse(runner,  "{" +
-                    "  \"message\": \"Duck with id = ${id} is updated\"" + "}", HttpStatus.OK);
-        } finally {
-            //Удаляем утку
-            delete(runner,  "${id}");
-        }
+        //Меняем цвет и высоту уточки
+        duck.color("red");
+        duck.height(7.0);
+        update(runner, duck.color(), duck.height(), duck.material(), duck.sound(), duck.wingsState());
+        validateResponse(runner, "{" +
+                "  \"message\": \"Duck with id = ${id} is updated\"" + "}", HttpStatus.OK);
+
     }
 
     @Test(description = "Метод изменения уточки (меняем цвет и звук")
     @CitrusTest
     public void updateSound(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            // Создаем новую утку
-            create(runner,  body);
-            getIdDuck(runner,   HttpStatus.OK);
-            //Меняем цвет и звук уточки уточки (недопустимо менять звук утки, поэтому должна быть ошибка 400)
-            update(runner,  "red", "5", "${id}", "rubber",
-                    "meow", "ACTIVE");
-            validateResponse(runner,  "{" +
-                    "  \"message\": \"Duck with id = \"${id}\" is not updated\"" + "}", HttpStatus.BAD_REQUEST);
-        } finally {
-            // Удаляем утку
-            delete(runner,  "${id}");
-        }
+        runner.$(doFinally().actions(action -> delete(runner)));
+        // Создаем новую утку
+        Duck duck = new Duck().color("yellow").height(5.0).material("rubber").sound("quack").wingsState(WingState.ACTIVE);
+        // Создаем утку и получаем id
+        create(runner, duck);
+        getIdDuck(runner);
+
+        //Меняем цвет и звук уточки уточки (недопустимо менять звук утки, поэтому должна быть ошибка 400)
+        duck.color("red");
+        duck.sound("mew");
+        update(runner, duck.color(), duck.height(), duck.material(), duck.sound(), duck.wingsState());
+        validateResponse(runner, "{" +
+                "  \"message\": \"Duck with id = \"${id}\" is not updated\"" + "}", HttpStatus.BAD_REQUEST);
+
     }
 
     @Test(description = "Метод получения характеристик уточки (Нечетный id material = rubber")
     @CitrusTest
     public void propertiesEvenId(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            String responseProperty = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"rubber\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
+        runner.$(doFinally().actions(action -> delete(runner)));
+        Duck duck = new Duck().color("yellow").height(5.0).material("rubber").sound("quack").wingsState(WingState.ACTIVE);
+        runner.$(action(context -> {
             do {
-                create(runner,  body);
-                getIdDuck(runner,   HttpStatus.OK);
-                run(new AbstractTestAction() {
-                    @Override
-                    public void doExecute(TestContext context) {
-                        String message = context.getVariable("${id}");
-                        idDuck = Integer.parseInt(message);
-                    }
-                });
+                create(runner, duck);
+                getIdDuck(runner);
             }
-            while (idDuck % 2 == 0);
-
-            // Оставляем поле material по умолчанию rubber и отправляем запрос на просмотр  свойств
-            getProperties(runner,  "${id}");
-            validateResponse(runner,  responseProperty, HttpStatus.OK);
-        } finally {
-            // Удаляем утку
-            delete(runner,  "${id}");
-        }
+            while (Integer.parseInt(context.getVariable("id")) % 2 == 0);
+        }));
+        // Оставляем поле material по умолчанию rubber и отправляем запрос на просмотр  свойств
+        getProperties(runner);
+        validateResponse(runner, duck, HttpStatus.OK);
 
     }
 
     @Test(description = "Метод получения характеристик уточки (Четный materiai = wood")
     @CitrusTest
     public void propertiesOddId(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            //Меняем поле material на wood и отправляем запрос на просмотр свойств;
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            String responseProperty = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5.0," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
+        runner.$(doFinally().actions(action -> delete(runner)));
+        //Меняем поле material на wood и отправляем запрос на просмотр свойств;
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+        runner.$(action(context -> {
             do {
-                create(runner,  body);
-                getIdDuck(runner,   HttpStatus.OK);
-                run(new AbstractTestAction() {
-                    @Override
-                    public void doExecute(TestContext context) {
-                        String message = context.getVariable("${id}");
-                        idDuck = Integer.parseInt(message);
-                    }
-                });
+                create(runner, duck);
+                getIdDuck(runner);
             }
-            while (idDuck % 2 != 0);
-            getProperties(runner,  "${id}");
-            validateResponse(runner,  responseProperty, HttpStatus.OK);
-        } finally {
-            // Удаляем утку
-            delete(runner,  "${id}");
-        }
+            while (Integer.parseInt(context.getVariable("id")) % 2 != 0);
+        }));
+        getProperties(runner);
+        validateResponse(runner, duck, HttpStatus.OK);
     }
 
     @Test(description = "Метод, позволяющий лететь или отказаться от полета уточке (крылья: ACTIVE")
     @CitrusTest
     public void flyActive(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            // С активными крыльями
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            create(runner,  body);
-            getIdDuck(runner,   HttpStatus.OK);
-
-            fly(runner,  "${id}");
-            validateResponse(runner,  "{" + "\"message\": \"I'm flying\"}", HttpStatus.OK);
-        } finally {
-            delete(runner,  "${id}");
-        }
-
+        runner.$(doFinally().actions(action -> delete(runner)));
+        // С активными крыльями
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+        create(runner, duck);
+        getIdDuck(runner);
+        Message resp = new Message().message(MessageStatus.FLYING.getValue());
+        fly(runner);
+        validateResponse(runner, resp, HttpStatus.OK);
     }
 
     @Test(description = "Метод, позволяющий лететь или отказаться от полета уточке (крылья: FIXED")
     @CitrusTest
     public void flyFixed(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            // С связанными крыльями
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"FIXED\"" +
-                    "}";
-            create(runner,  body);
-            getIdDuck(runner,   HttpStatus.OK);
+        runner.$(doFinally().actions(action -> delete(runner)));
+        // С связанными крыльями
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.FIXED);
+        create(runner, duck);
+        getIdDuck(runner);
 
-            fly(runner,  "${id}");
-            validateResponse(runner,  "{" + "\"message\": \"I can't fly\"}", HttpStatus.OK);
-        } finally {
-            //fly(runner,  "${id}");
-            delete(runner,  "${id}");
-        }
+        fly(runner);
+        validateResponse(runner, "{" + "\"message\": \"I can't fly\"}", HttpStatus.OK);
     }
 
     @Test(description = "Метод, позволяющий лететь или отказаться от полета уточке (крылья: UNDEFINED")
     @CitrusTest
     public void flyUndefined(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            // С неопределенными крыльями
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"" +
-                    "}";
-            create(runner,  body);
-            getIdDuck(runner,  HttpStatus.OK);
+        runner.$(doFinally().actions(action -> delete(runner)));
+        // С неопределенными крыльями
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack");
+        create(runner, duck);
+        getIdDuck(runner);
 
-            fly(runner,  "${id}");
-            validateResponse(runner,  "{" + "\"message\": \"Wings are not detected\"}",
-                    HttpStatus.INTERNAL_SERVER_ERROR);
-        } finally {
-            delete(runner,  "${id}");
-        }
+        fly(runner);
+        validateResponse(runner, "{" + "\"message\": \"Wings are not detected\"}",
+                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Test(description = "Метод, позволяющий плыть уточке (существующий id)")
     @CitrusTest
     public void swimExists(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            // Утка с существующим id
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            create(runner,  body);
-            getIdDuck(runner,   HttpStatus.OK);
-            swim(runner,  "${id}");
-            validateResponse(runner,  "{" + "\"message\": \"I'm swimming\"}", HttpStatus.OK);
-        } finally {
-            delete(runner,  "${id}");
-        }
-
+        runner.$(doFinally().actions(action -> delete(runner)));
+        // Утка с существующим id
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+        create(runner, duck);
+        getIdDuck(runner);
+        swim(runner);
+        validateResponse(runner, "{" + "\"message\": \"I'm swimming\"}", HttpStatus.OK);
     }
 
     @Test(description = "Метод, позволяющий плыть уточке (несуществующий id)")
@@ -313,83 +177,48 @@ public class DuckActionsTest extends DuckActionsClients {
     public void swimNonexist(@Optional @CitrusResource TestCaseRunner runner) {
         try {
             // Утка с несуществующим id
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
-            create(runner,  body);
-            getIdDuck(runner,   HttpStatus.OK);
+            Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+            create(runner, duck);
+            getIdDuck(runner);
         } finally {
-            delete(runner,  "${id}");
-            swim(runner,  "${id}");
-            validateResponse(runner,  "{" + "\"message\": \"Paws are not found\"}", HttpStatus.NOT_FOUND);
+            delete(runner);
+            swim(runner);
+            validateResponse(runner, "{" + "\"message\": \"Paws are not found\"}", HttpStatus.NOT_FOUND);
         }
     }
 
     @Test(description = "Метод, позволяющий крякать уточке (четный id)")
     @CitrusTest
     public void quackOddId(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
+        runner.$(doFinally().actions(action -> delete(runner)));
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+        runner.$(action(context -> {
             do {
-                create(runner,  body);
-                getIdDuck(runner,   HttpStatus.OK);
-                run(new AbstractTestAction() {
-                    @Override
-                    public void doExecute(TestContext context) {
-                        String message = context.getVariable("${id}");
-                        idDuck = Integer.parseInt(message);
-                    }
-                });
+                create(runner, duck);
+                getIdDuck(runner);
             }
-            while (idDuck % 2 != 0);
-            quack(runner,  "${id}", "1", "1");
-            validateResponse(runner,  "{" +
-                    " \"sound\": \"quack\"" + "}", HttpStatus.OK);
-        } finally {
-            delete(runner,  "${id}");
-        }
-
+            while (Integer.parseInt(context.getVariable("id")) % 2 != 0);
+        }));
+        quack(runner, "${id}", "1", "1");
+        Sound soundDuck = new Sound().sound("quack");
+        validateResponse(runner, soundDuck, HttpStatus.OK);
     }
 
     @Test(description = "Метод, позволяющий крякать уточке (нечетный id)")
     @CitrusTest
     public void quackEvenId(@Optional @CitrusResource TestCaseRunner runner) {
-        try {
-            String body = "{" +
-                    "  \"color\": \"yellow\"," +
-                    "  \"height\": 5," +
-                    "  \"material\": \"wood\"," +
-                    "  \"sound\": \"quack\"," +
-                    "  \"wingsState\": \"ACTIVE\"" +
-                    "}";
+        runner.$(doFinally().actions(action -> delete(runner)));
+        Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
+        runner.$(action(context -> {
             do {
-                create(runner,  body);
-                getIdDuck(runner,  HttpStatus.OK);
-                run(new AbstractTestAction() {
-                    @Override
-                    public void doExecute(TestContext context) {
-                        String message = context.getVariable("${id}");
-                        idDuck = Integer.parseInt(message);
-                    }
-                });
+                create(runner, duck);
+                getIdDuck(runner);
             }
-            while (idDuck % 2 == 0);
-            quack(runner, "${id}", "1", "1");
-            validateResponse(runner,  "{" +
-                    " \"sound\": \"quack\"" + "}", HttpStatus.OK);
-        } finally {
-            delete(runner,  "${id}");
-        }
-    }
+            while (Integer.parseInt(context.getVariable("id")) % 2 == 0);
+        }));
 
+        quack(runner, "${id}", "1", "1");
+        Sound soundDuck = new Sound().sound("quack");
+        validateResponse(runner, soundDuck, HttpStatus.OK);
+    }
 }
