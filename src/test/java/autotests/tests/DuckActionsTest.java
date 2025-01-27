@@ -128,7 +128,7 @@ public class DuckActionsTest extends DuckActionsClients {
         Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
         create(runner, duck);
         getIdDuck(runner);
-        Message resp = new Message().message(MessageStatus.FLYING.getValue());
+        Message resp = new Message().message(MessageStatus.FLYING.value());
         fly(runner);
         validateResponse(runner, resp, HttpStatus.OK);
     }

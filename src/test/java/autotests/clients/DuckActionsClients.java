@@ -65,7 +65,7 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .send()
                 .get("/api/duck/action/properties")
                 .message()
-                .queryParam("${id}"));
+                .queryParam("id","${id}"));
     }
 
     // Заставить утку летать
