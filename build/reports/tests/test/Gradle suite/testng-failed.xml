@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="classes" name="Failed suite [Gradle suite]" verbose="0">
+  <test thread-count="3" parallel="classes" name="Gradle test(failed)" verbose="0">
+    <classes>
+      <class name="autotests.tests.duckActionController.Swim">
+        <methods>
+          <include name="afterSuite"/>
+          <include name="after"/>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="swimNonexist" invocation-numbers="0"/>
+          <include name="beforeSuite"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="swimExists" invocation-numbers="0"/>
+          <include name="before"/>
+        </methods>
+      </class> <!-- autotests.tests.duckActionController.Swim -->
+      <class name="autotests.tests.duckActionController.Properties">
+        <methods>
+          <include name="afterSuite"/>
+          <include name="after"/>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="beforeSuite"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="propertiesEvenId" invocation-numbers="0"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="propertiesOddId" invocation-numbers="0"/>
+          <include name="before"/>
+        </methods>
+      </class> <!-- autotests.tests.duckActionController.Properties -->
+      <class name="autotests.tests.duckActionController.Fly">
+        <methods>
+          <include name="afterSuite"/>
+          <include name="after"/>
+          <include name="flyFixed" invocation-numbers="0"/>
+          <include name="flyUndefined" invocation-numbers="0"/>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="beforeSuite"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="flyActive" invocation-numbers="0"/>
+          <include name="before"/>
+        </methods>
+      </class> <!-- autotests.tests.duckActionController.Fly -->
+      <class name="autotests.tests.duckActionController.Quack">
+        <methods>
+          <include name="quackOddId" invocation-numbers="0"/>
+          <include name="afterSuite"/>
+          <include name="after"/>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="beforeSuite"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="before"/>
+        </methods>
+      </class> <!-- autotests.tests.duckActionController.Quack -->
+      <class name="autotests.tests.duckController.Update">
+        <methods>
+          <include name="afterSuite"/>
+          <include name="after"/>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="beforeSuite"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="updateSound" invocation-numbers="0"/>
+          <include name="before"/>
+        </methods>
+      </class> <!-- autotests.tests.duckController.Update -->
+    </classes>
+  </test> <!-- Gradle test(failed) -->
+</suite> <!-- Failed suite [Gradle suite] -->

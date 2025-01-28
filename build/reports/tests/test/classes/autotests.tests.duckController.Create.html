@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class autotests.tests.duckController.Create</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class autotests.tests.duckController.Create</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/autotests.tests.duckController.html">autotests.tests.duckController</a> &gt; Create</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.207s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createRubber[0](null)</td>
+<td class="success">0.183s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">createWood[0](null)</td>
+<td class="success">0.024s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>22:16:27,554 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,558 INFO  port.LoggingReporter| 
+22:16:27,562 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,563 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,563 INFO  port.LoggingReporter| 
+22:16:27,564 INFO  port.LoggingReporter| ------------------------------------------------------------------------
+22:16:27,564 DEBUG port.LoggingReporter| STARTING TEST Swim.swimExists &lt;autotests.tests.duckActionController&gt;
+22:16:27,564 INFO  port.LoggingReporter| 
+22:16:27,564 DEBUG trus.DefaultTestCase| Initializing test case
+22:16:27,564 DEBUG  context.TestContext| Setting variable: citrus.test.name with value: 'Swim.swimExists'
+22:16:27,564 DEBUG  context.TestContext| Setting variable: citrus.test.package with value: 'autotests.tests.duckActionController'
+22:16:27,564 DEBUG trus.DefaultTestCase| Initializing test parameter 'arg0' as variable
+22:16:27,564 DEBUG  context.TestContext| Setting variable: arg0 with value: 'com.consol.citrus.DefaultTestCaseRunner@2ec7d9d5'
+22:16:27,564 DEBUG trus.DefaultTestCase| Test variables:
+22:16:27,564 DEBUG trus.DefaultTestCase| citrus.test.package = autotests.tests.duckActionController
+22:16:27,565 INFO  port.LoggingReporter| 
+22:16:27,565 DEBUG trus.DefaultTestCase| arg0 = com.consol.citrus.DefaultTestCaseRunner@2ec7d9d5
+22:16:27,565 DEBUG port.LoggingReporter| TEST STEP 0: sql
+22:16:27,565 DEBUG trus.DefaultTestCase| citrus.test.name = Swim.swimExists
+22:16:27,565 DEBUG ons.ExecuteSQLAction| Executing SQL statement: insert into DUCK (id, color, height, material, sound, wings_state)
+values (1234567, 'yellow', 5.0, 'wood', 'quack','UNDEFINED')
+22:16:27,565 DEBUG  context.TestContext| Setting variable: id with value: '9239484787'
+22:16:27,566 INFO  port.LoggingReporter| 
+22:16:27,566 INFO  port.LoggingReporter| ------------------------------------------------------------------------
+22:16:27,566 DEBUG port.LoggingReporter| STARTING TEST Create.createRubber &lt;autotests.tests.duckController&gt;
+22:16:27,566 INFO  port.LoggingReporter| 
+22:16:27,566 DEBUG trus.DefaultTestCase| Initializing test case
+22:16:27,566 DEBUG  context.TestContext| Setting variable: citrus.test.name with value: 'Create.createRubber'
+22:16:27,566 DEBUG  context.TestContext| Setting variable: citrus.test.package with value: 'autotests.tests.duckController'
+22:16:27,566 DEBUG trus.DefaultTestCase| Initializing test parameter 'arg0' as variable
+22:16:27,566 DEBUG  context.TestContext| Setting variable: arg0 with value: 'com.consol.citrus.DefaultTestCaseRunner@5bf14a6d'
+22:16:27,566 INFO  ons.ExecuteSQLAction| SQL statement execution successful
+22:16:27,566 INFO  port.LoggingReporter| 
+22:16:27,566 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,566 DEBUG trus.DefaultTestCase| Test variables:
+22:16:27,567 DEBUG trus.DefaultTestCase| citrus.test.package = autotests.tests.duckController
+22:16:27,567 DEBUG trus.DefaultTestCase| arg0 = com.consol.citrus.DefaultTestCaseRunner@5bf14a6d
+22:16:27,567 DEBUG trus.DefaultTestCase| citrus.test.name = Create.createRubber
+22:16:27,567 INFO  port.LoggingReporter| 
+22:16:27,567 DEBUG port.LoggingReporter| TEST STEP 0: send
+22:16:27,567 DEBUG ltCorrelationManager| Saving correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,567 DEBUG  context.TestContext| Setting variable: citrus_message_correlator_yellowDuckService with value: 'citrus_message_id = '81c4ab8e-f02b-4f99-ba18-4ac5f6352b5f''
+22:16:27,567 INFO  port.LoggingReporter| 
+22:16:27,567 DEBUG  context.TestContext| Setting variable: citrus_message_replyTo_citrus_message_correlator_yellowDuckService with value: 'http://localhost:2222/api/duck/action/fly?id=1234567'
+22:16:27,567 DEBUG port.LoggingReporter| TEST STEP 0: sql
+22:16:27,567 INFO     client.HttpClient| Sending HTTP message to: 'http://localhost:2222/api/duck/action/fly?id=1234567'
+22:16:27,567 DEBUG ons.ExecuteSQLAction| Executing SQL statement: insert into DUCK (id, color, height, material, sound, wings_state)
+values (9239484787, 'yellow', 5.0, 'wood', 'quack','ACTIVE')
+22:16:27,567 DEBUG    client.HttpClient| Message to send:
+
+22:16:27,568 DEBUG ingClientInterceptor| Sending Http request message
+22:16:27,568 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,569 INFO  ons.ExecuteSQLAction| SQL statement execution successful
+22:16:27,569 INFO  port.LoggingReporter| 
+22:16:27,569 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,569 INFO  port.LoggingReporter| 
+22:16:27,569 DEBUG port.LoggingReporter| TEST STEP 0: send
+22:16:27,570 DEBUG ltCorrelationManager| Saving correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,570 DEBUG  context.TestContext| Setting variable: citrus_message_correlator_yellowDuckService with value: 'citrus_message_id = '3362b204-68ca-4151-8f26-e4976a09b0f0''
+22:16:27,570 DEBUG  context.TestContext| Setting variable: citrus_message_replyTo_citrus_message_correlator_yellowDuckService with value: 'http://localhost:2222/api/duck/action/swim?id=9239484787'
+22:16:27,570 INFO     client.HttpClient| Sending HTTP message to: 'http://localhost:2222/api/duck/action/swim?id=9239484787'
+22:16:27,570 DEBUG    client.HttpClient| Message to send:
+
+22:16:27,571 DEBUG ingClientInterceptor| Sending Http request message
+22:16:27,571 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,573 INFO  port.LoggingReporter| 
+22:16:27,573 DEBUG port.LoggingReporter| TEST STEP 0: send
+22:16:27,576 DEBUG ingClientInterceptor| Received Http response message
+22:16:27,576 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,577 DEBUG ingClientInterceptor| Received Http response message
+22:16:27,577 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,578 INFO     client.HttpClient| HTTP message was sent to endpoint: 'http://localhost:2222/api/duck/action/fly?id=1234567'
+22:16:27,578 DEBUG ltCorrelationManager| Saving correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,578 DEBUG  context.TestContext| Setting variable: citrus_message_correlator_yellowDuckService with value: 'citrus_message_id = '3d87f3ab-a0ad-4435-90b6-fb132f262aac''
+22:16:27,578 DEBUG  context.TestContext| Setting variable: citrus_message_replyTo_citrus_message_correlator_yellowDuckService with value: 'http://localhost:2222/api/duck/create'
+22:16:27,578 INFO     client.HttpClient| Sending HTTP message to: 'http://localhost:2222/api/duck/create'
+22:16:27,578 DEBUG ltCorrelationManager| Saving correlated object for 'citrus_message_id = '81c4ab8e-f02b-4f99-ba18-4ac5f6352b5f''
+22:16:27,578 INFO  port.LoggingReporter| 
+22:16:27,578 DEBUG    client.HttpClient| Message to send:
+{&quot;color&quot;:&quot;yellow&quot;,&quot;height&quot;:5.0,&quot;material&quot;:&quot;rubber&quot;,&quot;sound&quot;:&quot;quack&quot;,&quot;wingsState&quot;:&quot;ACTIVE&quot;}
+22:16:27,578 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,578 INFO  port.LoggingReporter| 
+22:16:27,578 DEBUG port.LoggingReporter| TEST STEP 0: receive
+22:16:27,579 DEBUG ngCorrelationManager| Get correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,579 DEBUG ltCorrelationManager| Finding correlated object for 'citrus_message_id = '81c4ab8e-f02b-4f99-ba18-4ac5f6352b5f''
+22:16:27,579 DEBUG ReceiveMessageAction| Received message:
+HTTPMESSAGE [id: ad25cc4d-f58a-4ac9-bf85-6c5a6c06e90e, payload: {
+  &quot;message&quot;: &quot;Wings are not detected :(&quot;
+}][headers: {Transfer-Encoding=chunked, Connection=keep-alive, contentType=application/json, Date=1738077387000, citrus_message_id=ad25cc4d-f58a-4ac9-bf85-6c5a6c06e90e, citrus_message_timestamp=1738077387578, Keep-Alive=timeout=60, Content-Type=application/json, citrus_http_status_code=200, citrus_http_reason_phrase=OK, citrus_http_version=HTTP/1.1}]
+22:16:27,581 DEBUG ReceiveMessageAction| Control message:
+HTTPMESSAGE [id: d5590c19-0c3c-4ea8-8bb3-867dd43da7aa, payload: {
+  &quot;message&quot;: &quot;Wings are not detected&quot;
+}][headers: {citrus_message_id=d5590c19-0c3c-4ea8-8bb3-867dd43da7aa, citrus_message_timestamp=1738077387578, citrus_http_reason_phrase=INTERNAL_SERVER_ERROR, citrus_http_status_code=500, Content-Type=application/json, citrus_message_type=XML}]
+22:16:27,581 DEBUG ageValidatorRegistry| Found 3 message validators for message
+22:16:27,581 DEBUG ssageHeaderValidator| Start message header validation ...
+22:16:27,582 DEBUG trus.DefaultTestCase| Entering finally block in test case
+22:16:27,582 INFO  port.LoggingReporter| 
+22:16:27,582 DEBUG port.LoggingReporter| TEST STEP 0: Fly$$Lambda$1066/0x00000008405e6040
+22:16:27,582 INFO  port.LoggingReporter| 
+22:16:27,582 DEBUG port.LoggingReporter| TEST STEP 0: sql
+22:16:27,582 DEBUG ons.ExecuteSQLAction| Executing SQL statement: DELETE FROM DUCK WHERE ID = 1234567
+22:16:27,583 INFO  ons.ExecuteSQLAction| SQL statement execution successful
+22:16:27,583 INFO  port.LoggingReporter| 
+22:16:27,583 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,583 INFO  port.LoggingReporter| 
+22:16:27,583 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,583 INFO  port.LoggingReporter| 
+22:16:27,583 ERROR port.LoggingReporter| TEST FAILED Fly.flyUndefined &lt;autotests.tests.duckActionController&gt; Nested exception is: 
+com.consol.citrus.exceptions.ValidationException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'INTERNAL_SERVER_ERROR' but was 'OK'
+	at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:79)
+	at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:101)
+	at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:44)
+	at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+	at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+	at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+	at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+	at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+	at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+	at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+	at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:123)
+	at autotests.tests.duckActionController.Fly.flyUndefined(Fly.java:64)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+	at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+	at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+	at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+	at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+	at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+	at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Values not equal for header element 'citrus_http_reason_phrase', expected 'INTERNAL_SERVER_ERROR' but was 'OK'
+	at org.springframework.util.Assert.isTrue(Assert.java:121)
+	at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:66)
+	... 35 more
+22:16:27,586 INFO  port.LoggingReporter| ------------------------------------------------------------------------
+22:16:27,586 INFO  port.LoggingReporter| 
+22:16:27,586 DEBUG ingClientInterceptor| Sending Http request message
+22:16:27,586 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,756 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,756 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,758 INFO  port.LoggingReporter| 
+22:16:27,758 INFO  port.LoggingReporter| ------------------------------------------------------------------------
+22:16:27,758 INFO  port.LoggingReporter| 
+22:16:27,758 DEBUG port.LoggingReporter| STARTING TEST Update.updateSound &lt;autotests.tests.duckController&gt;
+22:16:27,758 INFO  port.LoggingReporter| ------------------------------------------------------------------------
+22:16:27,758 INFO  port.LoggingReporter| 
+22:16:27,758 DEBUG port.LoggingReporter| STARTING TEST Create.createWood &lt;autotests.tests.duckController&gt;
+22:16:27,758 DEBUG trus.DefaultTestCase| Initializing test case
+22:16:27,758 INFO  port.LoggingReporter| 
+22:16:27,758 DEBUG trus.DefaultTestCase| Initializing test case
+22:16:27,758 DEBUG  context.TestContext| Setting variable: citrus.test.name with value: 'Create.createWood'
+22:16:27,758 DEBUG  context.TestContext| Setting variable: citrus.test.name with value: 'Update.updateSound'
+22:16:27,758 DEBUG  context.TestContext| Setting variable: citrus.test.package with value: 'autotests.tests.duckController'
+22:16:27,758 DEBUG  context.TestContext| Setting variable: citrus.test.package with value: 'autotests.tests.duckController'
+22:16:27,758 DEBUG trus.DefaultTestCase| Initializing test parameter 'arg0' as variable
+22:16:27,758 DEBUG trus.DefaultTestCase| Initializing test parameter 'arg0' as variable
+22:16:27,758 DEBUG  context.TestContext| Setting variable: arg0 with value: 'com.consol.citrus.DefaultTestCaseRunner@23479e22'
+22:16:27,758 DEBUG  context.TestContext| Setting variable: arg0 with value: 'com.consol.citrus.DefaultTestCaseRunner@6465257'
+22:16:27,758 DEBUG trus.DefaultTestCase| Test variables:
+22:16:27,758 DEBUG trus.DefaultTestCase| Test variables:
+22:16:27,758 DEBUG trus.DefaultTestCase| citrus.test.package = autotests.tests.duckController
+22:16:27,758 DEBUG trus.DefaultTestCase| citrus.test.package = autotests.tests.duckController
+22:16:27,758 DEBUG trus.DefaultTestCase| arg0 = com.consol.citrus.DefaultTestCaseRunner@23479e22
+22:16:27,758 DEBUG trus.DefaultTestCase| arg0 = com.consol.citrus.DefaultTestCaseRunner@6465257
+22:16:27,758 DEBUG trus.DefaultTestCase| citrus.test.name = Create.createWood
+22:16:27,758 DEBUG trus.DefaultTestCase| citrus.test.name = Update.updateSound
+22:16:27,759 DEBUG  context.TestContext| Setting variable: id with value: '1175366161'
+22:16:27,760 INFO  port.LoggingReporter| 
+22:16:27,760 INFO  port.LoggingReporter| 
+22:16:27,760 DEBUG port.LoggingReporter| TEST STEP 0: send
+22:16:27,760 DEBUG port.LoggingReporter| TEST STEP 0: send
+22:16:27,762 DEBUG ltCorrelationManager| Saving correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,762 DEBUG  context.TestContext| Setting variable: citrus_message_correlator_yellowDuckService with value: 'citrus_message_id = 'd8cbabe7-9f08-4a1d-a1e9-fd8739f7d392''
+22:16:27,762 DEBUG  context.TestContext| Setting variable: citrus_message_replyTo_citrus_message_correlator_yellowDuckService with value: 'http://localhost:2222/api/duck/create'
+22:16:27,762 INFO     client.HttpClient| Sending HTTP message to: 'http://localhost:2222/api/duck/create'
+22:16:27,762 DEBUG    client.HttpClient| Message to send:
+{&quot;color&quot;:&quot;yellow&quot;,&quot;height&quot;:5.0,&quot;material&quot;:&quot;wood&quot;,&quot;sound&quot;:&quot;quack&quot;,&quot;wingsState&quot;:&quot;ACTIVE&quot;}
+22:16:27,763 DEBUG ltCorrelationManager| Saving correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,763 DEBUG  context.TestContext| Setting variable: citrus_message_correlator_yellowDuckService with value: 'citrus_message_id = '5121548e-f704-4dda-b69a-2004b0ba34fa''
+22:16:27,763 DEBUG ingClientInterceptor| Sending Http request message
+22:16:27,763 DEBUG  context.TestContext| Setting variable: citrus_message_replyTo_citrus_message_correlator_yellowDuckService with value: 'http://localhost:2222/api/duck/create'
+22:16:27,763 INFO     client.HttpClient| Sending HTTP message to: 'http://localhost:2222/api/duck/create'
+22:16:27,763 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,763 DEBUG    client.HttpClient| Message to send:
+{&quot;color&quot;:&quot;yellow&quot;,&quot;height&quot;:5.0,&quot;material&quot;:&quot;rubber&quot;,&quot;sound&quot;:&quot;quack&quot;,&quot;wingsState&quot;:&quot;ACTIVE&quot;}
+22:16:27,763 DEBUG ingClientInterceptor| Sending Http request message
+22:16:27,763 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,768 DEBUG ingClientInterceptor| Received Http response message
+22:16:27,768 DEBUG ingClientInterceptor| Received Http response message
+22:16:27,769 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,769 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,771 INFO     client.HttpClient| HTTP message was sent to endpoint: 'http://localhost:2222/api/duck/create'
+22:16:27,771 INFO     client.HttpClient| HTTP message was sent to endpoint: 'http://localhost:2222/api/duck/create'
+22:16:27,771 DEBUG ltCorrelationManager| Saving correlated object for 'citrus_message_id = '5121548e-f704-4dda-b69a-2004b0ba34fa''
+22:16:27,771 DEBUG ltCorrelationManager| Saving correlated object for 'citrus_message_id = 'd8cbabe7-9f08-4a1d-a1e9-fd8739f7d392''
+22:16:27,771 INFO  port.LoggingReporter| 
+22:16:27,771 INFO  port.LoggingReporter| 
+22:16:27,771 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,771 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,772 DEBUG       util.FileUtils| Reading file resource: 'successfulCreateWood.json' (encoding is 'windows-1251')
+22:16:27,772 INFO  port.LoggingReporter| 
+22:16:27,772 DEBUG port.LoggingReporter| TEST STEP 0: receive
+22:16:27,772 DEBUG ngCorrelationManager| Get correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,772 DEBUG ltCorrelationManager| Finding correlated object for 'citrus_message_id = '5121548e-f704-4dda-b69a-2004b0ba34fa''
+22:16:27,772 DEBUG ReceiveMessageAction| Received message:
+HTTPMESSAGE [id: 4954c6f3-b15d-48e2-b08f-ab03209db3ca, payload: {
+  &quot;id&quot;: 169,
+  &quot;color&quot;: &quot;yellow&quot;,
+  &quot;height&quot;: 5.0,
+  &quot;material&quot;: &quot;rubber&quot;,
+  &quot;sound&quot;: &quot;quack&quot;,
+  &quot;wingsState&quot;: &quot;ACTIVE&quot;
+}][headers: {Transfer-Encoding=chunked, Connection=keep-alive, contentType=application/json, Date=1738077387000, citrus_message_id=4954c6f3-b15d-48e2-b08f-ab03209db3ca, citrus_message_timestamp=1738077387771, Keep-Alive=timeout=60, Content-Type=application/json, citrus_http_status_code=200, citrus_http_reason_phrase=OK, citrus_http_version=HTTP/1.1}]
+22:16:27,772 DEBUG oadVariableExtractor| Reading path elements.
+22:16:27,773 INFO  port.LoggingReporter| 
+22:16:27,773 DEBUG port.LoggingReporter| TEST STEP 0: receive
+22:16:27,773 DEBUG ngCorrelationManager| Get correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,773 DEBUG ltCorrelationManager| Finding correlated object for 'citrus_message_id = 'd8cbabe7-9f08-4a1d-a1e9-fd8739f7d392''
+22:16:27,773 DEBUG ReceiveMessageAction| Received message:
+HTTPMESSAGE [id: 2452be6b-17e8-4c62-8701-603d6131fcc4, payload: {
+  &quot;id&quot;: 170,
+  &quot;color&quot;: &quot;yellow&quot;,
+  &quot;height&quot;: 5.0,
+  &quot;material&quot;: &quot;wood&quot;,
+  &quot;sound&quot;: &quot;quack&quot;,
+  &quot;wingsState&quot;: &quot;ACTIVE&quot;
+}][headers: {Transfer-Encoding=chunked, Connection=keep-alive, contentType=application/json, Date=1738077387000, citrus_message_id=2452be6b-17e8-4c62-8701-603d6131fcc4, citrus_message_timestamp=1738077387771, Keep-Alive=timeout=60, Content-Type=application/json, citrus_http_status_code=200, citrus_http_reason_phrase=OK, citrus_http_version=HTTP/1.1}]
+22:16:27,774 DEBUG oadVariableExtractor| Reading path elements.
+22:16:27,773 DEBUG athVariableExtractor| Reading JSON elements with JSONPath
+22:16:27,774 DEBUG athVariableExtractor| Evaluating JSONPath expression: $.id
+22:16:27,774 DEBUG athVariableExtractor| Reading JSON elements with JSONPath
+22:16:27,774 DEBUG athVariableExtractor| Evaluating JSONPath expression: $.id
+22:16:27,774 DEBUG  context.TestContext| Setting variable: id with value: '169'
+22:16:27,775 DEBUG  context.TestContext| Setting variable: id with value: '170'
+22:16:27,775 DEBUG ReceiveMessageAction| Control message:
+HTTPMESSAGE [id: f69d5d68-f029-4a3c-8d9d-14519ab9daf6, payload: ][headers: {citrus_message_id=f69d5d68-f029-4a3c-8d9d-14519ab9daf6, citrus_message_timestamp=1738077387772, citrus_http_reason_phrase=OK, citrus_http_status_code=200, citrus_message_type=XML}]
+22:16:27,775 DEBUG ReceiveMessageAction| Control message:
+HTTPMESSAGE [id: 7611d627-d6db-4276-a6d0-927c6cfb94b3, payload: {
+
+  &quot;id&quot;: &quot;@ignore@&quot;,
+
+  &quot;color&quot;: &quot;yellow&quot;,
+
+  &quot;height&quot;: 5.0,
+
+  &quot;material&quot;: &quot;wood&quot;,
+
+  &quot;sound&quot;: &quot;quack&quot;,
+
+  &quot;wingsState&quot;: &quot;ACTIVE&quot;
+}][headers: {citrus_message_id=7611d627-d6db-4276-a6d0-927c6cfb94b3, citrus_message_timestamp=1738077387772, citrus_http_reason_phrase=OK, citrus_http_status_code=200, Content-Type=application/json, citrus_message_type=XML}]
+22:16:27,775 DEBUG ageValidatorRegistry| Found 3 message validators for message
+22:16:27,775 DEBUG ssageHeaderValidator| Start message header validation ...
+22:16:27,775 DEBUG ageValidatorRegistry| Found 3 message validators for message
+22:16:27,775 DEBUG ssageHeaderValidator| Start message header validation ...
+22:16:27,775 DEBUG faultHeaderValidator| Validating header element: citrus_http_reason_phrase='OK': OK.
+22:16:27,775 DEBUG faultHeaderValidator| Validating header element: citrus_http_reason_phrase='OK': OK.
+22:16:27,775 DEBUG faultHeaderValidator| Validating header element: citrus_http_status_code='200': OK.
+22:16:27,775 DEBUG faultHeaderValidator| Validating header element: citrus_http_status_code='200': OK.
+22:16:27,775 INFO  ssageHeaderValidator| Message header validation successful: All values OK
+22:16:27,775 DEBUG TextMessageValidator| Start JSON message validation ...
+22:16:27,775 DEBUG JsonSchemaValidation| Starting Json schema validation ...
+22:16:27,775 DEBUG faultHeaderValidator| Validating header element: Content-Type='application/json': OK.
+22:16:27,775 INFO  JsonSchemaValidation| Json schema validation successful: All values OK
+22:16:27,775 INFO  ssageHeaderValidator| Message header validation successful: All values OK
+22:16:27,775 DEBUG TextMessageValidator| Skip message payload validation as no control message was defined
+22:16:27,775 DEBUG TextMessageValidator| Start JSON message validation ...
+22:16:27,775 INFO  port.LoggingReporter| 
+22:16:27,775 DEBUG JsonSchemaValidation| Starting Json schema validation ...
+22:16:27,775 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,775 INFO  JsonSchemaValidation| Json schema validation successful: All values OK
+22:16:27,775 DEBUG TextMessageValidator| Validation successful for JSON entry 'color' (yellow)
+22:16:27,775 DEBUG TextMessageValidator| Validation successful for JSON entry 'material' (wood)
+22:16:27,776 DEBUG TextMessageValidator| Validation successful for JSON entry 'wingsState' (ACTIVE)
+22:16:27,776 DEBUG TextMessageValidator| Validation successful for JSON entry 'sound' (quack)
+22:16:27,776 DEBUG TextMessageValidator| JSON entry: 'id' is ignored by placeholder '@ignore@'
+22:16:27,776 DEBUG TextMessageValidator| Validation successful for JSON entry 'height' (5.0)
+22:16:27,776 INFO  TextMessageValidator| JSON message validation successful: All values OK
+22:16:27,776 INFO  port.LoggingReporter| 
+22:16:27,776 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,776 INFO  port.LoggingReporter| 
+22:16:27,776 DEBUG port.LoggingReporter| TEST STEP 0: sql-query
+22:16:27,776 DEBUG xecuteSQLQueryAction| Executing SQL query: SELECT * FROM DUCK WHERE ID=170
+22:16:27,776 INFO  port.LoggingReporter| 
+22:16:27,776 DEBUG port.LoggingReporter| TEST STEP 0: send
+22:16:27,776 DEBUG ltCorrelationManager| Saving correlation key for 'citrus_message_correlator_yellowDuckService'
+22:16:27,776 DEBUG  context.TestContext| Setting variable: citrus_message_correlator_yellowDuckService with value: 'citrus_message_id = '7f05def5-0bf2-4fa4-9e42-2e5fc04057ba''
+22:16:27,777 DEBUG  context.TestContext| Setting variable: citrus_message_replyTo_citrus_message_correlator_yellowDuckService with value: 'http://localhost:2222/api/duck/update?color=red&amp;material=rubber&amp;wingsState=ACTIVE&amp;sound=mew&amp;id=169&amp;height=5.0'
+22:16:27,777 INFO     client.HttpClient| Sending HTTP message to: 'http://localhost:2222/api/duck/update?color=red&amp;material=rubber&amp;wingsState=ACTIVE&amp;sound=mew&amp;id=169&amp;height=5.0'
+22:16:27,777 DEBUG    client.HttpClient| Message to send:
+
+22:16:27,777 INFO  xecuteSQLQueryAction| SQL query execution successful
+22:16:27,777 DEBUG xecuteSQLQueryAction| Validation successful for column: 'COLOR' expected value: yellow - value OK
+22:16:27,777 DEBUG xecuteSQLQueryAction| Validation successful for column: 'SOUND' expected value: quack - value OK
+22:16:27,777 DEBUG xecuteSQLQueryAction| Validation successful for column: 'WINGS_STATE' expected value: ACTIVE - value OK
+22:16:27,777 DEBUG xecuteSQLQueryAction| Validation successful for column: 'HEIGHT' expected value: 5.0 - value OK
+22:16:27,777 DEBUG xecuteSQLQueryAction| Validation successful for column: 'MATERIAL' expected value: wood - value OK
+22:16:27,777 INFO  xecuteSQLQueryAction| SQL query validation successful: All values OK
+22:16:27,777 DEBUG  context.TestContext| Setting variable: COLOR with value: 'yellow'
+22:16:27,777 DEBUG  context.TestContext| Setting variable: SOUND with value: 'quack'
+22:16:27,777 DEBUG  context.TestContext| Setting variable: ID with value: '170'
+22:16:27,777 DEBUG  context.TestContext| Setting variable: WINGS_STATE with value: 'ACTIVE'
+22:16:27,777 DEBUG  context.TestContext| Setting variable: HEIGHT with value: '5.0'
+22:16:27,777 DEBUG  context.TestContext| Setting variable: MATERIAL with value: 'wood'
+22:16:27,777 INFO  port.LoggingReporter| 
+22:16:27,777 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,777 DEBUG trus.DefaultTestCase| Entering finally block in test case
+22:16:27,777 INFO  port.LoggingReporter| 
+22:16:27,777 DEBUG ingClientInterceptor| Sending Http request message
+22:16:27,777 DEBUG port.LoggingReporter| TEST STEP 0: Create$$Lambda$1074/0x00000008405f7c40
+22:16:27,777 INFO  port.LoggingReporter| 
+22:16:27,777 DEBUG   util.TypeConverter| Using type converter 'spring'
+22:16:27,777 DEBUG port.LoggingReporter| TEST STEP 0: sql
+22:16:27,777 DEBUG ons.ExecuteSQLAction| Executing SQL statement: DELETE FROM DUCK WHERE ID = 170
+22:16:27,778 INFO  ons.ExecuteSQLAction| SQL statement execution successful
+22:16:27,778 INFO  port.LoggingReporter| 
+22:16:27,778 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,778 INFO  port.LoggingReporter| 
+22:16:27,778 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,778 INFO  port.LoggingReporter| 
+22:16:27,778 INFO  port.LoggingReporter| TEST SUCCESS Create.createWood (autotests.tests.duckController)
+22:16:27,778 INFO  port.LoggingReporter| ------------------------------------------------------------------------
+22:16:27,778 INFO  port.LoggingReporter| 
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.8</a> at 28 янв. 2025 г., 22:16:28</p>
+</div>
+</div>
+</body>
+</html>

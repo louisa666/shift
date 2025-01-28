@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="autotests.tests.duckController.Delete" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-28T15:16:27" hostname="DESKTOP-PE0VQ31" time="0.048">
+  <properties/>
+  <testcase name="deleteDuck[0](null)" classname="autotests.tests.duckController.Delete" time="0.048"/>
+  <system-out><![CDATA[22:16:27,594 DEBUG ReceiveMessageAction| Control message:
+HTTPMESSAGE [id: cbecffe8-a6f6-4a26-a61c-09abe843c075, payload: {
+  "message": "I'm swimming"
+}][headers: {citrus_message_id=cbecffe8-a6f6-4a26-a61c-09abe843c075, citrus_message_timestamp=1738077387593, citrus_http_reason_phrase=OK, citrus_http_status_code=200, Content-Type=application/json, citrus_message_type=XML}]
+22:16:27,595 DEBUG ageValidatorRegistry| Found 3 message validators for message
+22:16:27,595 DEBUG ssageHeaderValidator| Start message header validation ...
+22:16:27,595 DEBUG trus.DefaultTestCase| Entering finally block in test case
+22:16:27,595 INFO  port.LoggingReporter| 
+22:16:27,595 DEBUG port.LoggingReporter| TEST STEP 0: Swim$$Lambda$1067/0x00000008405e6840
+22:16:27,595 INFO  port.LoggingReporter| 
+22:16:27,595 DEBUG port.LoggingReporter| TEST STEP 0: sql
+22:16:27,595 DEBUG ons.ExecuteSQLAction| Executing SQL statement: DELETE FROM DUCK WHERE ID = 9239484787
+22:16:27,599 INFO  ons.ExecuteSQLAction| SQL statement execution successful
+22:16:27,599 INFO  port.LoggingReporter| 
+22:16:27,599 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,599 INFO  port.LoggingReporter| 
+22:16:27,599 DEBUG port.LoggingReporter| TEST STEP 0 SUCCESS
+22:16:27,599 INFO  port.LoggingReporter| 
+22:16:27,599 ERROR port.LoggingReporter| TEST FAILED Swim.swimExists <autotests.tests.duckActionController> Nested exception is: 
+com.consol.citrus.exceptions.ValidationException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'OK' but was 'NOT_FOUND'
+	at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:79)
+	at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:101)
+	at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:44)
+	at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+	at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+	at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+	at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+	at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+	at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+	at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+	at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:123)
+	at autotests.tests.duckActionController.Swim.swimExists(Swim.java:32)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+	at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+	at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+	at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+	at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+	at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+	at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Values not equal for header element 'citrus_http_reason_phrase', expected 'OK' but was 'NOT_FOUND'
+	at org.springframework.util.Assert.isTrue(Assert.java:121)
+	at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:66)
+	... 35 more
+22:16:27,601 INFO  port.LoggingReporter| ------------------------------------------------------------------------
+22:16:27,601 INFO  port.LoggingReporter| 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="12" total="26" passed="5" failed="9" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-01-28T22:16:26 NOVT" name="Gradle suite" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1063">
+    <groups>
+    </groups>
+    <test started-at="2025-01-28T22:16:26 NOVT" name="Gradle test" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1063">
+      <class name="autotests.tests.duckActionController.Swim">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextPrepareTestInstance" finished-at="2025-01-28T22:16:27 NOVT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="before()[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="before" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Swim.swimExists(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="swimExists(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="swimExists" description="РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РїР»С‹С‚СЊ СѓС‚РѕС‡РєРµ (СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ id)" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="42" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'OK' but was 'NOT_FOUND']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'OK' but was 'NOT_FOUND'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:123)
+at autotests.tests.duckActionController.Swim.swimExists(Swim.java:32)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'OK' but was 'NOT_FOUND'
+at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:79)
+at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:101)
+at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:44)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for header element 'citrus_http_reason_phrase', expected 'OK' but was 'NOT_FOUND'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:66)
+... 35 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- swimExists -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Swim.swimExists(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Swim.swimNonexist(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="swimNonexist(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="swimNonexist" description="РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РїР»С‹С‚СЊ СѓС‚РѕС‡РєРµ (РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ id)" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="30" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Failed to validate JSON text:
+{"message":"Paws are not found (((("} Values not equal for entry: 'message', expected 'Paws are not found' but was 'Paws are not found ((((']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Failed to validate JSON text:
+{"message":"Paws are not found (((("} Values not equal for entry: 'message', expected 'Paws are not found' but was 'Paws are not found (((('
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:123)
+at autotests.tests.duckActionController.Swim.swimNonexist(Swim.java:48)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Failed to validate JSON text:
+{"message":"Paws are not found (((("} Values not equal for entry: 'message', expected 'Paws are not found' but was 'Paws are not found (((('
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:114)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:58)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for entry: 'message', expected 'Paws are not found' but was 'Paws are not found (((('
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateJson(JsonTextMessageValidator.java:211)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:102)
+... 34 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- swimNonexist -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Swim.swimNonexist(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+        <test-method is-config="true" signature="after()[pri:0, instance:autotests.tests.duckActionController.Swim@1f1cddf3]" started-at="2025-01-28T22:16:27 NOVT" name="after" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+      </class> <!-- autotests.tests.duckActionController.Swim -->
+      <class name="autotests.tests.duckActionController.Fly">
+        <test-method is-config="true" signature="beforeSuite(org.testng.ITestContext)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:25 NOVT" name="beforeSuite" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="931" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4377ed24]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextBeforeTestClass" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextPrepareTestInstance" finished-at="2025-01-28T22:16:26 NOVT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="before()[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:26 NOVT" name="before" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Fly.flyActive(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="flyActive(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:26 NOVT" name="flyActive" description="РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ Р»РµС‚РµС‚СЊ РёР»Рё РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РїРѕР»РµС‚Р° СѓС‚РѕС‡РєРµ (РєСЂС‹Р»СЊСЏ: ACTIVE" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="574" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Failed to validate JSON text:
+{"message":"I am flying :)"} Values not equal for entry: 'message', expected 'I'm flying' but was 'I am flying :)']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Failed to validate JSON text:
+{"message":"I am flying :)"} Values not equal for entry: 'message', expected 'I'm flying' but was 'I am flying :)'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:132)
+at autotests.tests.duckActionController.Fly.flyActive(Fly.java:34)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Failed to validate JSON text:
+{"message":"I am flying :)"} Values not equal for entry: 'message', expected 'I'm flying' but was 'I am flying :)'
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:114)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:58)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for entry: 'message', expected 'I'm flying' but was 'I am flying :)'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateJson(JsonTextMessageValidator.java:211)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:102)
+... 34 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flyActive -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Fly.flyActive(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Fly.flyFixed(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="flyFixed(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="flyFixed" description="РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ Р»РµС‚РµС‚СЊ РёР»Рё РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РїРѕР»РµС‚Р° СѓС‚РѕС‡РєРµ (РєСЂС‹Р»СЊСЏ: FIXED" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="34" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Failed to validate JSON text:
+{"message":"I can not fly :C"} Values not equal for entry: 'message', expected 'I can't fly' but was 'I can not fly :C']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Failed to validate JSON text:
+{"message":"I can not fly :C"} Values not equal for entry: 'message', expected 'I can't fly' but was 'I can not fly :C'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:123)
+at autotests.tests.duckActionController.Fly.flyFixed(Fly.java:49)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Failed to validate JSON text:
+{"message":"I can not fly :C"} Values not equal for entry: 'message', expected 'I can't fly' but was 'I can not fly :C'
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:114)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:58)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for entry: 'message', expected 'I can't fly' but was 'I can not fly :C'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateJson(JsonTextMessageValidator.java:211)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:102)
+... 34 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flyFixed -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Fly.flyFixed(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Fly.flyUndefined(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="flyUndefined(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="flyUndefined" description="РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ Р»РµС‚РµС‚СЊ РёР»Рё РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РїРѕР»РµС‚Р° СѓС‚РѕС‡РєРµ (РєСЂС‹Р»СЊСЏ: UNDEFINED" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="35" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'INTERNAL_SERVER_ERROR' but was 'OK']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'INTERNAL_SERVER_ERROR' but was 'OK'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:123)
+at autotests.tests.duckActionController.Fly.flyUndefined(Fly.java:64)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'INTERNAL_SERVER_ERROR' but was 'OK'
+at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:79)
+at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:101)
+at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:44)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for header element 'citrus_http_reason_phrase', expected 'INTERNAL_SERVER_ERROR' but was 'OK'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:66)
+... 35 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flyUndefined -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Fly.flyUndefined(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="after()[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="after" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+        <test-method is-config="true" signature="afterSuite(org.testng.ITestContext)[pri:0, instance:autotests.tests.duckActionController.Fly@1e4c6583]" started-at="2025-01-28T22:16:27 NOVT" name="afterSuite" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="66" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4377ed24]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- autotests.tests.duckActionController.Fly -->
+      <class name="autotests.tests.duckController.Delete">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextPrepareTestInstance" finished-at="2025-01-28T22:16:27 NOVT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="before()[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="before" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Delete.deleteDuck(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="deleteDuck(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="deleteDuck" description="РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ СѓС‚РѕС‡РєРё" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="48" status="PASS">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteDuck -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="5" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Delete.deleteDuck(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="after()[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="after" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:autotests.tests.duckController.Delete@3fd05b3e]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="13" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- autotests.tests.duckController.Delete -->
+      <class name="autotests.tests.duckController.Create">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextPrepareTestInstance" finished-at="2025-01-28T22:16:27 NOVT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Create.createRubber(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="before()[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="before" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method signature="createRubber(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="createRubber" description="РњРµС‚РѕРґ СЃРѕР·РґР°РЅРёСЏ СѓС‚РєРё (material = rubber" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="183" status="PASS">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createRubber -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Create.createRubber(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Create.createWood(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="createWood(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="createWood" description="РњРµС‚РѕРґ СЃРѕР·РґР°РЅРёСЏ СѓС‚РєРё (material = wood" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="24" status="PASS">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createWood -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Create.createWood(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="after()[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="after" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:autotests.tests.duckController.Create@32f96bba]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- autotests.tests.duckController.Create -->
+      <class name="autotests.tests.duckActionController.Properties">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextBeforeTestClass" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextPrepareTestInstance" finished-at="2025-01-28T22:16:26 NOVT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="before()[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:26 NOVT" name="before" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Properties.propertiesEvenId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="propertiesEvenId(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:26 NOVT" name="propertiesEvenId" description="РњРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє СѓС‚РѕС‡РєРё (РќРµС‡РµС‚РЅС‹Р№ id material = rubber" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="574" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Failed to validate JSON text:
+{"color":"yellow","height":500.0,"material":"rubber","sound":"quack","wingsState":"ACTIVE"} Values not equal for entry: 'height', expected '5.0' but was '500.0']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Failed to validate JSON text:
+{"color":"yellow","height":500.0,"material":"rubber","sound":"quack","wingsState":"ACTIVE"} Values not equal for entry: 'height', expected '5.0' but was '500.0'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:132)
+at autotests.tests.duckActionController.Properties.propertiesEvenId(Properties.java:34)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Failed to validate JSON text:
+{"color":"yellow","height":500.0,"material":"rubber","sound":"quack","wingsState":"ACTIVE"} Values not equal for entry: 'height', expected '5.0' but was '500.0'
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:114)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:58)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for entry: 'height', expected '5.0' but was '500.0'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateJson(JsonTextMessageValidator.java:211)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:102)
+... 34 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- propertiesEvenId -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Properties.propertiesEvenId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Properties.propertiesOddId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="propertiesOddId(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:27 NOVT" name="propertiesOddId" description="РњРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє СѓС‚РѕС‡РєРё (Р§РµС‚РЅС‹Р№ materiai = wood" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="35" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Failed to validate JSON text:
+{} Number of JSON entries not equal for element: '$.', expected '5' but was '0']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Failed to validate JSON text:
+{} Number of JSON entries not equal for element: '$.', expected '5' but was '0'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:132)
+at autotests.tests.duckActionController.Properties.propertiesOddId(Properties.java:51)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Failed to validate JSON text:
+{} Number of JSON entries not equal for element: '$.', expected '5' but was '0'
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:114)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:58)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Number of JSON entries not equal for element: '$.', expected '5' but was '0'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateJson(JsonTextMessageValidator.java:145)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:102)
+... 34 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- propertiesOddId -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Properties.propertiesOddId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="after()[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:27 NOVT" name="after" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:autotests.tests.duckActionController.Properties@73a8e994]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- autotests.tests.duckActionController.Properties -->
+      <class name="autotests.tests.duckController.Update">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextPrepareTestInstance" finished-at="2025-01-28T22:16:27 NOVT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="before()[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="before" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Update.updateHeight(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="updateHeight(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="updateHeight" description="РњРµС‚РѕРґ РёР·РјРµРЅРµРЅРёСЏ СѓС‚РѕС‡РєРё (РјРµРЅСЏРµРј С†РІРµС‚ Рё РІС‹СЃРѕС‚Сѓ" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="81" status="PASS">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateHeight -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Update.updateHeight(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Update.updateSound(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="updateSound(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="updateSound" description="РњРµС‚РѕРґ РёР·РјРµРЅРµРЅРёСЏ СѓС‚РѕС‡РєРё (РјРµРЅСЏРµРј С†РІРµС‚ Рё Р·РІСѓРє" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="38" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'BAD_REQUEST' but was 'OK']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'BAD_REQUEST' but was 'OK'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:123)
+at autotests.tests.duckController.Update.updateSound(Update.java:56)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Validation failed: Values not equal for header element 'citrus_http_reason_phrase', expected 'BAD_REQUEST' but was 'OK'
+at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:79)
+at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:101)
+at com.consol.citrus.validation.DefaultMessageHeaderValidator.validateMessage(DefaultMessageHeaderValidator.java:44)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for header element 'citrus_http_reason_phrase', expected 'BAD_REQUEST' but was 'OK'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.DefaultHeaderValidator.validateHeader(DefaultHeaderValidator.java:66)
+... 35 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateSound -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckController.Update.updateSound(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="after()[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="after" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:autotests.tests.duckController.Update@479b5066]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- autotests.tests.duckController.Update -->
+      <class name="autotests.tests.duckActionController.Quack">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextBeforeTestClass" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextPrepareTestInstance" finished-at="2025-01-28T22:16:26 NOVT" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="before()[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:26 NOVT" name="before" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:26 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:26 NOVT" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Quack.quackEvenId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="quackEvenId(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:26 NOVT" name="quackEvenId" description="РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РєСЂСЏРєР°С‚СЊ СѓС‚РѕС‡РєРµ (РЅРµС‡РµС‚РЅС‹Р№ id)" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="574" status="PASS">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quackEvenId -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Quack.quackEvenId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextBeforeTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Quack.quackOddId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method signature="quackOddId(com.consol.citrus.TestCaseRunner)[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:27 NOVT" name="quackOddId" description="РњРµС‚РѕРґ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РєСЂСЏРєР°С‚СЊ СѓС‚РѕС‡РєРµ (С‡РµС‚РЅС‹Р№ id)" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="34" status="FAIL">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <exception class="com.consol.citrus.exceptions.TestCaseFailedException">
+            <message>
+              <![CDATA[Failed to validate JSON text:
+{"sound":"moo"} Values not equal for entry: 'sound', expected 'quack' but was 'moo']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.consol.citrus.exceptions.TestCaseFailedException: Failed to validate JSON text:
+{"sound":"moo"} Values not equal for entry: 'sound', expected 'quack' but was 'moo'
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:143)
+at com.consol.citrus.DefaultTestCaseRunner.run(DefaultTestCaseRunner.java:125)
+at com.consol.citrus.TestActionRunner.$(TestActionRunner.java:35)
+at autotests.clients.DuckActionsClients.validateResponse(DuckActionsClients.java:132)
+at autotests.tests.duckActionController.Quack.quackOddId(Quack.java:36)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
+at com.consol.citrus.testng.TestNGHelper.lambda$invokeTestMethod$1(TestNGHelper.java:82)
+at com.consol.citrus.common.DefaultTestLoader.lambda$doLoad$1(DefaultTestLoader.java:116)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at com.consol.citrus.common.DefaultTestLoader.doLoad(DefaultTestLoader.java:116)
+at com.consol.citrus.common.DefaultTestLoader.load(DefaultTestLoader.java:94)
+at com.consol.citrus.testng.TestNGHelper.invokeTestMethod(TestNGHelper.java:83)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:185)
+at com.consol.citrus.testng.spring.TestNGCitrusSpringSupport.run(TestNGCitrusSpringSupport.java:101)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:272)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:669)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.consol.citrus.exceptions.ValidationException: Failed to validate JSON text:
+{"sound":"moo"} Values not equal for entry: 'sound', expected 'quack' but was 'moo'
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:114)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:58)
+at com.consol.citrus.validation.AbstractMessageValidator.validateMessage(AbstractMessageValidator.java:46)
+at com.consol.citrus.actions.ReceiveMessageAction.validateMessage(ReceiveMessageAction.java:279)
+at com.consol.citrus.actions.ReceiveMessageAction.doExecute(ReceiveMessageAction.java:168)
+at com.consol.citrus.actions.AbstractTestAction.execute(AbstractTestAction.java:59)
+at com.consol.citrus.DefaultTestCase.executeAction(DefaultTestCase.java:136)
+... 28 more
+Caused by: java.lang.IllegalArgumentException: Values not equal for entry: 'sound', expected 'quack' but was 'moo'
+at org.springframework.util.Assert.isTrue(Assert.java:121)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateJson(JsonTextMessageValidator.java:211)
+at com.consol.citrus.validation.json.JsonTextMessageValidator.validateMessage(JsonTextMessageValidator.java:102)
+... 34 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.consol.citrus.exceptions.TestCaseFailedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quackOddId -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestMethod" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="5" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void autotests.tests.duckActionController.Quack.quackOddId(com.consol.citrus.TestCaseRunner)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="after()[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:27 NOVT" name="after" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:autotests.tests.duckActionController.Quack@4364863]" started-at="2025-01-28T22:16:27 NOVT" name="springTestContextAfterTestClass" finished-at="2025-01-28T22:16:27 NOVT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- autotests.tests.duckActionController.Quack -->
+    </test> <!-- Gradle test -->
+  </suite> <!-- Gradle suite -->
+</testng-results>
