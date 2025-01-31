@@ -13,24 +13,33 @@ import static com.consol.citrus.dsl.MessageSupport.MessageBodySupport.fromBody;
 
 
 public class DuckActionsClients extends BaseTest {
-    public void validateDuck (TestCaseRunner runner, String id, String color, String height,
-                              String material, String sound, String wingsState) {
+    @Step("Проверка, что параметры утки изменились в БД")
+    public void validateDuck(TestCaseRunner runner, String id, String color, String height,
+                             String material, String sound, String wingsState) {
         runner.$(query(testDb).statement("SELECT * FROM DUCK WHERE ID=" + id)
-                .validate("COLOR",color)
-                .validate("HEIGHT",height)
-                .validate("MATERIAL",material)
-                .validate("SOUND",sound)
-                .validate("WINGS_STATE",wingsState));
+                .validate("COLOR", color)
+                .validate("HEIGHT", height)
+                .validate("MATERIAL", material)
+                .validate("SOUND", sound)
+                .validate("WINGS_STATE", wingsState));
     }
 
-    public void updateData (TestCaseRunner runner, String sql)
-    {
-        runner.$(sql(testDb).statement(sql));
+    @Step("Удаление утки из БД")
+    public void deteteDuckDB(TestCaseRunner runner) {
+        runner.$(sql(testDb).statement("DELETE FROM DUCK WHERE ID = ${id}"));
+    }
+
+    @Step("Создание утки в БД")
+    public void createDuckDB(TestCaseRunner runner, String color, double height, String material, String sound,
+                             WingState wingsState) {
+        runner.$(sql(testDb).statement("insert into DUCK (id, color, height, material, sound, wings_state)\n" +
+                "values (${id}, '" + color + "', " + height + ", '" + material + "', '" + sound + "'" +
+                ",'" + wingsState + "');"));
     }
 
     @Step("Эндпоинт для создания уточки")
     public void create(TestCaseRunner runner, Object body) {
-        sendRequestPost(runner,yellowDuckService, "/api/duck/create", body);
+        sendRequestPost(runner, yellowDuckService, "/api/duck/create", body);
     }
 
     @Step("Эндпоинт для удаления уточки")
@@ -41,8 +50,8 @@ public class DuckActionsClients extends BaseTest {
     @Step("Эндпоинт для обновления свойств уточки")
     public void update(TestCaseRunner runner, String color, double height, String material, String sound,
                        WingState wingsState) {
-        sendRequestPut(runner, yellowDuckService, "/api/duck/update?color="+ color +
-                "&height="+ height + "&material=" + material + "&sound=" + sound +
+        sendRequestPut(runner, yellowDuckService, "/api/duck/update?color=" + color +
+                "&height=" + height + "&material=" + material + "&sound=" + sound +
                 "&wingsState=" + wingsState.toString() + "&id=${id}");
     }
 
@@ -63,20 +72,22 @@ public class DuckActionsClients extends BaseTest {
 
     @Step("Эндпоинт заставить утку крякать")
     public void quack(TestCaseRunner runner, String id, String repetitionCount, String soundCount) {
-        sendRequestGet(runner, yellowDuckService, "/api/duck/action/quack?id="+ id +"&repetitionCount=" +
-                repetitionCount +"&soundCount=" + soundCount);
+        sendRequestGet(runner, yellowDuckService, "/api/duck/action/quack?id=" + id + "&repetitionCount=" +
+                repetitionCount + "&soundCount=" + soundCount);
     }
 
-    // Получение и проверка ответа для всех методов (С использованием String в качестве параметра)
+    @Step("Получение и проверка ответа для всех методов (С использованием String в качестве параметра)")
     public void validateResponse(TestCaseRunner runner, String responseMessage, HttpStatus status) {
         validateResponseTemplate(runner, yellowDuckService, responseMessage, status);
     }
-    // Получение и проверка ответа для всех методов (С использованием payload)
+
+    @Step("Получение и проверка ответа для всех методов (С использованием payload)")
     public void validateResponse(TestCaseRunner runner, Object responseMessage, HttpStatus status) {
         validateResponseTemplate(runner, yellowDuckService, responseMessage, status);
     }
 
-     // Получение id утки
+    @Step("Получение id утки")
+    // Получение id утки
     public void getIdDuck(TestCaseRunner runner) {
         runner.$(http().client(yellowDuckService)
                 .receive()
@@ -84,7 +95,8 @@ public class DuckActionsClients extends BaseTest {
                 .message()
                 .extract(fromBody().expression("$.id", "id")));
     }
-    // Проверка ответа и извлечение id утки (С использованием ClassPathResource)
+
+    @Step("Проверка ответа и извлечение id утки (С использованием ClassPathResource)")
     public void validateResponseCreateAndGetId(TestCaseRunner runner, String responseMessage, HttpStatus status) {
         validateResponseTemplatePath(runner, yellowDuckService, responseMessage, status);
     }

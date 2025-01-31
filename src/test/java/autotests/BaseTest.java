@@ -5,6 +5,7 @@ import com.consol.citrus.http.client.HttpClient;
 import com.consol.citrus.message.builder.ObjectMappingPayloadBuilder;
 import com.consol.citrus.testng.spring.TestNGCitrusSpringSupport;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Step;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.test.context.ContextConfiguration;
 
+import static com.consol.citrus.actions.ExecuteSQLAction.Builder.sql;
 import static com.consol.citrus.dsl.MessageSupport.MessageBodySupport.fromBody;
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
@@ -21,6 +23,12 @@ public class BaseTest extends TestNGCitrusSpringSupport {
     protected HttpClient yellowDuckService;
     @Autowired
     protected SingleConnectionDataSource testDb;
+
+    protected void updateData (TestCaseRunner runner,SingleConnectionDataSource DB, String sql)
+    {
+
+        runner.$(sql(DB).statement(sql));
+    }
 
     protected void sendRequestGet(TestCaseRunner runner, HttpClient URL, String path)
     {

@@ -16,18 +16,15 @@ import static com.consol.citrus.container.FinallySequence.Builder.doFinally;
 
 @Epic("Тесты на duck-action-controller")
 @Feature("Эндпоинт /api/duck/action/swim")
-public class Swim extends DuckActionsClients {
+public class SwimTest extends DuckActionsClients {
     @Test(description = "Метод, позволяющий плыть уточке (существующий id)")
     @CitrusTest
     public void swimExists(@Optional @CitrusResource TestCaseRunner runner) {
         runner.variable("id", "citrus:randomNumber(10, true)");
-        runner.$(doFinally().actions(action -> updateData(runner, "DELETE FROM DUCK WHERE ID = ${id}")));
+        runner.$(doFinally().actions(action -> deteteDuckDB(runner)));
         // Утка с существующим id
         Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
-
-        updateData(runner, "insert into DUCK (id, color, height, material, sound, wings_state)\n" +
-                "values (${id}, '" + duck.color() + "', " + duck.height() + ", '" + duck.material() + "', '" + duck.sound() + "'" +
-                ",'" + duck.wingsState() + "');");
+        createDuckDB(runner, duck.color(), duck.height() ,  duck.material() ,duck.sound(), duck.wingsState());
         swim(runner);
         validateResponse(runner, "{" + "\"message\": \"I'm swimming\"}", HttpStatus.OK);
     }
@@ -39,11 +36,9 @@ public class Swim extends DuckActionsClients {
             runner.variable("id", "citrus:randomNumber(10, true)");
             // Утка с несуществующим id
             Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
-            updateData(runner, "insert into DUCK (id, color, height, material, sound, wings_state)\n" +
-                    "values (${id}, '" + duck.color() + "', " + duck.height() + ", '" + duck.material() + "', '" + duck.sound() + "'" +
-                    ",'" + duck.wingsState() + "');");
+            createDuckDB(runner, duck.color(), duck.height() ,  duck.material() ,duck.sound(), duck.wingsState());
         } finally {
-            updateData(runner, "DELETE FROM DUCK WHERE ID = ${id}");
+            deteteDuckDB(runner);
             swim(runner);
             validateResponse(runner, "{" + "\"message\": \"Paws are not found\"}", HttpStatus.NOT_FOUND);
         }

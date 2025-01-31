@@ -17,11 +17,11 @@ import static com.consol.citrus.container.FinallySequence.Builder.doFinally;
 
 @Epic("Тесты на duck-controller")
 @Feature("Эндпоинт /api/duck/create")
-public class Create  extends DuckActionsClients {
+public class CreateTest extends DuckActionsClients {
     @Test(description = "Метод создания утки (material = rubber")
     @CitrusTest
     public void createRubber(@Optional @CitrusResource TestCaseRunner runner) {
-        runner.$(doFinally().actions(action -> updateData(runner, "DELETE FROM DUCK WHERE ID = ${id}")));
+        runner.$(doFinally().actions(action -> deteteDuckDB(runner)));
         Duck duck = new Duck().color("yellow").height(5.0).material("rubber").sound("quack").wingsState(WingState.ACTIVE);
         String responseBody = "duckActionsTest/successfulCreateRubber.json";
         create(runner, duck);
@@ -34,7 +34,7 @@ public class Create  extends DuckActionsClients {
     @Test(description = "Метод создания утки (material = wood")
     @CitrusTest
     public void createWood(@Optional @CitrusResource TestCaseRunner runner) {
-        runner.$(doFinally().actions(action -> updateData(runner, "DELETE FROM DUCK WHERE ID = ${id}")));
+        runner.$(doFinally().actions(action -> deteteDuckDB(runner)));
         Duck duck = new Duck().color("yellow").height(5.0).material("wood").sound("quack").wingsState(WingState.ACTIVE);
         String responseBody = "duckActionsTest/successfulCreateWood.json";
         create(runner, duck);
@@ -59,7 +59,7 @@ public class Create  extends DuckActionsClients {
     @CitrusTest
     @CitrusParameters({"payload", "response", "runner"})
     public void createDucks(Object payload, String response, @Optional @CitrusResource TestCaseRunner runner) {
-        runner.$(doFinally().actions(action -> updateData(runner, "DELETE FROM DUCK WHERE ID = ${id}")));
+        runner.$(doFinally().actions(action -> deteteDuckDB(runner)));
         create(runner, payload);
         validateResponseCreateAndGetId(runner, response, HttpStatus.OK);
     }
