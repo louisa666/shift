@@ -46,7 +46,7 @@ public class FlyTest extends DuckActionsClients {
     @Test(description = "Метод, позволяющий лететь или отказаться от полета уточке (крылья: UNDEFINED")
     @CitrusTest
     public void flyUndefined(@Optional @CitrusResource TestCaseRunner runner) {
-        runner.variable("id", "1234567");
+        runner.variable("id", "citrus:randomNumber(10, true)");
         runner.$(doFinally().actions(action -> deteteDuckDB(runner)));
 
         // С неопределенными крыльями
