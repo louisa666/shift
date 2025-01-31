@@ -1,122 +1,93 @@
 package autotests.clients;
 
-import autotests.EndpointConfig;
+import autotests.BaseTest;
 import autotests.payloads.WingState;
-import com.consol.citrus.message.MessageType;
-import com.consol.citrus.message.builder.ObjectMappingPayloadBuilder;
-import com.consol.citrus.testng.spring.TestNGCitrusSpringSupport;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.http.entity.ContentType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
+import io.qameta.allure.Step;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import com.consol.citrus.http.client.HttpClient;
 import com.consol.citrus.TestCaseRunner;
-import org.springframework.test.context.ContextConfiguration;
 
+import static com.consol.citrus.actions.ExecuteSQLAction.Builder.sql;
+import static com.consol.citrus.actions.ExecuteSQLQueryAction.Builder.query;
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 import static com.consol.citrus.dsl.MessageSupport.MessageBodySupport.fromBody;
 
 
-@ContextConfiguration(classes = {EndpointConfig.class})
-public class DuckActionsClients extends TestNGCitrusSpringSupport {
-    @Autowired
-    protected HttpClient yellowDuckService;
+public class DuckActionsClients extends BaseTest {
+    @Step("Проверка, что параметры утки изменились в БД")
+    public void validateDuck(TestCaseRunner runner, String id, String color, String height,
+                             String material, String sound, String wingsState) {
+        runner.$(query(testDb).statement("SELECT * FROM DUCK WHERE ID=" + id)
+                .validate("COLOR", color)
+                .validate("HEIGHT", height)
+                .validate("MATERIAL", material)
+                .validate("SOUND", sound)
+                .validate("WINGS_STATE", wingsState));
+    }
 
-    // Создание утки
+    @Step("Удаление утки из БД")
+    public void deteteDuckDB(TestCaseRunner runner) {
+        runner.$(sql(testDb).statement("DELETE FROM DUCK WHERE ID = ${id}"));
+    }
+
+    @Step("Создание утки в БД")
+    public void createDuckDB(TestCaseRunner runner, String color, double height, String material, String sound,
+                             WingState wingsState) {
+        runner.$(sql(testDb).statement("insert into DUCK (id, color, height, material, sound, wings_state)\n" +
+                "values (${id}, '" + color + "', " + height + ", '" + material + "', '" + sound + "'" +
+                ",'" + wingsState + "');"));
+    }
+
+    @Step("Эндпоинт для создания уточки")
     public void create(TestCaseRunner runner, Object body) {
-        runner.$(http().client(yellowDuckService)
-                .send()
-                .post("/api/duck/create")
-                .message()
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body(new ObjectMappingPayloadBuilder(body, new ObjectMapper())));
+        sendRequestPost(runner, yellowDuckService, "/api/duck/create", body);
     }
 
-    // Удаление утки
+    @Step("Эндпоинт для удаления уточки")
     public void delete(TestCaseRunner runner) {
-        runner.$(http().client(yellowDuckService)
-                .send()
-                .delete("/api/duck/delete")
-                .message()
-                .queryParam( "id", "${id}"));
+        sendRequestDelete(runner, yellowDuckService, "/api/duck/delete?id=${id}");
     }
 
-    // Обновление свойств утки
+    @Step("Эндпоинт для обновления свойств уточки")
     public void update(TestCaseRunner runner, String color, double height, String material, String sound,
                        WingState wingsState) {
-        runner.$(http().client(yellowDuckService)
-                .send()
-                .put("/api/duck/update")
-                .message()
-                .queryParam("color", color)
-                .queryParam("height",String.valueOf(height))
-                .queryParam("material", material)
-                .queryParam("sound", sound)
-                .queryParam("wingsState", String.valueOf(wingsState))
-                .queryParam("id", "${id}")
-         );
+        sendRequestPut(runner, yellowDuckService, "/api/duck/update?color=" + color +
+                "&height=" + height + "&material=" + material + "&sound=" + sound +
+                "&wingsState=" + wingsState.toString() + "&id=${id}");
     }
 
-    // Получение свойств утки
+    @Step("Эндпоинт для получения свойств уточки")
     public void getProperties(TestCaseRunner runner) {
-        runner.$(http().client(yellowDuckService)
-                .send()
-                .get("/api/duck/action/properties")
-                .message()
-                .queryParam("id","${id}"));
+        sendRequestGet(runner, yellowDuckService, "/api/duck/action/properties?id=${id}");
     }
 
-    // Заставить утку летать
+    @Step("Эндпоинт заставить утку летать")
     public void fly(TestCaseRunner runner) {
-        runner.$(http().client(yellowDuckService)
-                .send()
-                .get("/api/duck/action/fly")
-                .message()
-                .queryParam("id", "${id}"));
+        sendRequestGet(runner, yellowDuckService, "/api/duck/action/fly?id=${id}");
     }
 
-    // Заставить утку плавать
+    @Step("Эндпоинт заставить утку плавать")
     public void swim(TestCaseRunner runner) {
-        runner.$(http().client(yellowDuckService)
-                .send()
-                .get("/api/duck/action/swim")
-                .message()
-                .queryParam("id", "${id}"));
+        sendRequestGet(runner, yellowDuckService, "/api/duck/action/swim?id=${id}");
     }
 
-    // Заставить утку крякать
+    @Step("Эндпоинт заставить утку крякать")
     public void quack(TestCaseRunner runner, String id, String repetitionCount, String soundCount) {
-        runner.$(http().client(yellowDuckService)
-                .send()
-                .get("/api/duck/action/quack")
-                .message()
-                .queryParam("id", id)
-                .queryParam("repetitionCount", repetitionCount)
-                .queryParam("soundCount", soundCount));
+        sendRequestGet(runner, yellowDuckService, "/api/duck/action/quack?id=" + id + "&repetitionCount=" +
+                repetitionCount + "&soundCount=" + soundCount);
     }
 
-    // Получение и проверка ответа для всех методов (С использованием String в качестве параметра)
+    @Step("Получение и проверка ответа для всех методов (С использованием String в качестве параметра)")
     public void validateResponse(TestCaseRunner runner, String responseMessage, HttpStatus status) {
-        runner.$(http().client(yellowDuckService)
-                .receive()
-                .response(status)
-                .message()
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body(responseMessage));
-    }
-    // Получение и проверка ответа для всех методов (С использованием payload)
-    public void validateResponse(TestCaseRunner runner, Object responseMessage, HttpStatus status) {
-        runner.$(http().client(yellowDuckService)
-                .receive()
-                .response(status)
-                .message()
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body(new ObjectMappingPayloadBuilder(responseMessage, new ObjectMapper())));
+        validateResponseTemplate(runner, yellowDuckService, responseMessage, status);
     }
 
-     // Получение id утки
+    @Step("Получение и проверка ответа для всех методов (С использованием payload)")
+    public void validateResponse(TestCaseRunner runner, Object responseMessage, HttpStatus status) {
+        validateResponseTemplate(runner, yellowDuckService, responseMessage, status);
+    }
+
+    @Step("Получение id утки")
+    // Получение id утки
     public void getIdDuck(TestCaseRunner runner) {
         runner.$(http().client(yellowDuckService)
                 .receive()
@@ -124,15 +95,10 @@ public class DuckActionsClients extends TestNGCitrusSpringSupport {
                 .message()
                 .extract(fromBody().expression("$.id", "id")));
     }
-    // Проверка ответа и извлечение id утки (С использованием ClassPathResource)
+
+    @Step("Проверка ответа и извлечение id утки (С использованием ClassPathResource)")
     public void validateResponseCreateAndGetId(TestCaseRunner runner, String responseMessage, HttpStatus status) {
-        runner.$(http().client(yellowDuckService)
-                .receive()
-                .response(status)
-                .message()
-                .extract(fromBody().expression("$.id", "id"))
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body(new ClassPathResource(responseMessage)));
+        validateResponseTemplatePath(runner, yellowDuckService, responseMessage, status);
     }
 
 }
